@@ -15,3 +15,5 @@ export const placeholders = {
 
 /** People HR */
 export const BASE_URL = "https://api.peoplehr.net";
+
+export const API_FORMAT = "yyyy-MM-dd";

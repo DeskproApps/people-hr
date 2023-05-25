@@ -3,11 +3,11 @@ import { Title } from "@deskpro/app-sdk";
 import { Container, Property } from "../common";
 import type { FC } from "react";
 import type { EmployeeType, Maybe } from "../../types";
-import type { EmployeeSalary } from "../../services/peoplehr/types";
+import type { Salary } from "../../services/peoplehr/types";
 
 type Props = {
   employee: Maybe<EmployeeType>,
-  salary: Maybe<EmployeeSalary>,
+  salary: Maybe<Salary>,
 };
 
 const EmployeeInfo: FC<Props> = ({ employee, salary }) => {

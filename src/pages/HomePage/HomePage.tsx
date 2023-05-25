@@ -4,7 +4,7 @@ import { Home } from "../../components";
 import type { FC } from "react";
 
 const HomePage: FC = () => {
-  const { isLoading, employee, salary } = useEmployee();
+  const { isLoading, employee, salary, holidays } = useEmployee();
 
   if (isLoading) {
     return (
@@ -13,7 +13,7 @@ const HomePage: FC = () => {
   }
 
   return (
-    <Home employee={employee} salary={salary} />
+    <Home employee={employee} salary={salary} holidays={holidays} />
   );
 };
 

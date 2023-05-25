@@ -36,7 +36,12 @@ export type RequestParams = {
 export type Request = <T>(
   client: IDeskproClient,
   params: RequestParams,
-) => Promise<{ data: T }>;
+) => Promise<{
+  isError: boolean,
+  Status: number
+  Message: string,
+  Result: T,
+}>;
 
 /** Deskpro types */
 export type Settings = {

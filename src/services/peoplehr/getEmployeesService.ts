@@ -1,9 +1,9 @@
 import { baseRequest } from "./baseRequest";
 import type { IDeskproClient } from "@deskpro/app-sdk";
-import type { Employees } from "./types";
+import type { Employee } from "./types";
 
 const getEmployeesService = (client: IDeskproClient) => {
-  return baseRequest<Employees>(client, {
+  return baseRequest<Employee[]>(client, {
     url: "/Employee",
     data: {
       Action: "GetAllEmployeeDetail",

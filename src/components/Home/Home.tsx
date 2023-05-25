@@ -1,17 +1,18 @@
 import { HorizontalDivider } from "@deskpro/app-sdk";
 import { EmployeeInfo } from "./EmployeeInfo";
-// import { Requests } from "./Requests";
+import { Requests } from "./Requests";
 import { NoEmployeeFound } from "./NoEmployeeFound";
 import type { FC } from "react";
 import type { Maybe, EmployeeType } from "../../types";
-import type { EmployeeSalary } from "../../services/peoplehr/types";
+import type { Salary, Holiday } from "../../services/peoplehr/types";
 
 type Props = {
   employee: Maybe<EmployeeType>,
-  salary: Maybe<EmployeeSalary>,
+  salary: Maybe<Salary>,
+  holidays: Maybe<Holiday[]>,
 };
 
-const Home: FC<Props> = ({ employee, salary }) => {
+const Home: FC<Props> = ({ employee, salary, holidays }) => {
   if (!employee) {
     return <NoEmployeeFound/>;
   }
@@ -20,7 +21,7 @@ const Home: FC<Props> = ({ employee, salary }) => {
     <>
       <EmployeeInfo employee={employee} salary={salary} />
       <HorizontalDivider/>
-      {/*<Requests/>*/}
+      <Requests holidays={holidays}/>
     </>
   );
 };

@@ -250,16 +250,23 @@ export type Salary = {
   Entitlements: []
 };
 
-export type EmployeeSalary = {
-  isError: boolean,
-  Status: number,
-  Message: string,
-  Result: Salary[],
-};
-
-export type Employees = {
-  isError: boolean,
-  Status: number,
-  Message: string,
-  Result: Employee[]
+export type Holiday = {
+  AnnualLeaveTxnId: number,
+  StartDate: string,
+  EndDate: string,
+  DurationType: number,
+  DurationInDays: number,
+  DurationInMinutes: number,
+  DurationInDaysThisPeriod: number,
+  DurationInMinutesThisPeriod: number,
+  PartOfDay: string,
+  StartDatePartOfTheDay: string,
+  EndDatePartOfTheDay: string,
+  RequesterComments: string,
+  ApproverComments: string,
+  Approver: string,
+  Status: "Pending" | "Approved" | "Declined",
+  LastActionDateTime: string,
+  IsToilHoliday: boolean,
+  ReferenceId: string,
 };
