@@ -77,6 +77,8 @@ export type EventPayload =
 /** Entities */
 export type EmployeeType = {
   id: Employee["EmployeeId"]["DisplayValue"],
+  firstName: Employee["FirstName"]["DisplayValue"],
+  lastName: Employee["LastName"]["DisplayValue"],
   email: Employee["EmailId"]["DisplayValue"],
   department: Employee["Department"]["DisplayValue"],
   role: Employee["JobRole"]["DisplayValue"],

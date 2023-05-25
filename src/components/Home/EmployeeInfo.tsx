@@ -2,6 +2,7 @@ import get from "lodash/get";
 import round from "lodash/round";
 import { Title } from "@deskpro/app-sdk";
 import { Container, Property } from "../common";
+import { getFullName } from "../../utils";
 import type { FC } from "react";
 import type { EmployeeType, Maybe } from "../../types";
 import type { Salary } from "../../services/peoplehr/types";
@@ -14,9 +15,10 @@ type Props = {
 const EmployeeInfo: FC<Props> = ({ employee, salary }) => {
   const currency = get(salary, ["Currency"]);
   const salaryAmount = get(salary, ["TotalSalaryAmount"]);
+
   return (
     <Container>
-      <Title title="John Jones" />
+      <Title title={getFullName(employee)} />
       <Property
         label="Email address"
         text={get(employee, ["email"], "-")}

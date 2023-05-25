@@ -48,6 +48,8 @@ const useEmployee: UseEmployee = () => {
       // @ts-ignore
       select: (data) => (get(data, ["Result"], []) || []).map((employee: Employee) => ({
         id: get(employee, ["EmployeeId", "DisplayValue"], "-") || "-",
+        firstName: get(employee, ["FirstName", "DisplayValue"]),
+        lastName: get(employee, ["LastName", "DisplayValue"]),
         email: get(employee, ["EmailId", "DisplayValue"], "-") || "-",
         department: get(employee, ["Department", "DisplayValue"], "-") || "-",
         role: get(employee, ["JobRole", "DisplayValue"], "-") || "-",
