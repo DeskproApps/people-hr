@@ -1,4 +1,5 @@
 import get from "lodash/get";
+import round from "lodash/round";
 import { Title } from "@deskpro/app-sdk";
 import { Container, Property } from "../common";
 import type { FC } from "react";
@@ -12,6 +13,7 @@ type Props = {
 
 const EmployeeInfo: FC<Props> = ({ employee, salary }) => {
   const currency = get(salary, ["Currency"]);
+  const salaryAmount = get(salary, ["TotalSalaryAmount"]);
   return (
     <Container>
       <Title title="John Jones" />
@@ -37,7 +39,7 @@ const EmployeeInfo: FC<Props> = ({ employee, salary }) => {
       />
       <Property
         label="Salary"
-        text={currency ? `${currency} *****` : "-"}
+        text={(currency && salaryAmount) ? `${currency} ${round(Number(salaryAmount), 2)}` : "-"}
       />
     </Container>
   );
