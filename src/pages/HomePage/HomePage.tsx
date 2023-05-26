@@ -5,7 +5,17 @@ import { Home } from "../../components";
 import type { FC } from "react";
 
 const HomePage: FC = () => {
-  const { isLoading, employee, salary, holidays } = useEmployee();
+  const {
+    salary,
+    employee,
+    holidays,
+    benefits,
+    lateness,
+    documents,
+    isLoading,
+    trainings,
+    qualifications,
+  } = useEmployee();
 
   useSetTitle("Contact");
 
@@ -16,7 +26,16 @@ const HomePage: FC = () => {
   }
 
   return (
-    <Home employee={employee} salary={salary} holidays={holidays} />
+    <Home
+      employee={employee}
+      salary={salary}
+      holidays={holidays}
+      benefits={benefits}
+      documents={documents}
+      lateness={lateness}
+      qualifications={qualifications}
+      trainings={trainings}
+    />
   );
 };
 

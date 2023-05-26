@@ -1,0 +1,19 @@
+{
+  "isError": false,
+  "Status": 0,
+  "Message": "The requested processed successfully.",
+  "Result": [
+    {
+      "EffectiveFrom": "2023-05-23",
+      "SalaryType": "Annual",
+      "PaymentFrequency": "Monthly",
+      "SalaryAmount": "250000.0000",
+      "TotalSalaryAmount": "250000.0000",
+      "Currency": "£",
+      "ChangeReason": "Starting Salary",
+      "Comments": "",
+      "Deductions": [],
+      "Entitlements": []
+    }
+  ]
+}

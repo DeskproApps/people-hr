@@ -1,0 +1,13 @@
+{
+  "isError": false,
+  "Status": 0,
+  "Message": "The request processed successfully.",
+  "Result": [
+    {
+      "EmployeeId": 2851194,
+      "LateDate": "2023-05-25",
+      "LateMinutes": 10,
+      "Comments": "Train strike"
+    }
+  ]
+}

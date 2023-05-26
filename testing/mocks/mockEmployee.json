@@ -1,0 +1,244 @@
+{
+  "isError": false,
+  "Status": 0,
+  "Message": "The request processed successfully.",
+  "Result": {
+    "EmployeeId": {
+      "DisplayValue": "PW1",
+      "FieldHistory": []
+    },
+    "Title": {
+      "DisplayValue": "",
+      "FieldHistory": []
+    },
+    "FirstName": {
+      "DisplayValue": "David",
+      "FieldHistory": []
+    },
+    "LastName": {
+      "DisplayValue": "Test",
+      "FieldHistory": []
+    },
+    "OtherName": {
+      "DisplayValue": "",
+      "FieldHistory": []
+    },
+    "KnownAs": {
+      "DisplayValue": "",
+      "FieldHistory": []
+    },
+    "EmailId": {
+      "DisplayValue": "davidtestacc0401@gmail.com",
+      "FieldHistory": []
+    },
+    "StartDate": {
+      "DisplayValue": "2023-05-23",
+      "FieldHistory": []
+    },
+    "DateOfBirth": {
+      "DisplayValue": "",
+      "FieldHistory": []
+    },
+    "JobRole": {
+      "DisplayValue": "",
+      "FieldHistoryForJobRole": [
+        {
+          "JobRole": "",
+          "EffectiveDate": "2023-05-23",
+          "ChangedOn": "2023-05-23",
+          "TimeStamp": "2023-05-23 15:50:10",
+          "ReasonForChange": "New Starter"
+        }
+      ]
+    },
+    "Company": {
+      "DisplayValue": "",
+      "FieldHistoryForEffectiveDate": []
+    },
+    "CompanyEffectiveDate": {
+      "DisplayValue": ""
+    },
+    "Location": {
+      "DisplayValue": "",
+      "FieldHistoryForEffectiveDate": []
+    },
+    "LocationEffectiveDate": {
+      "DisplayValue": ""
+    },
+    "Department": {
+      "DisplayValue": "",
+      "FieldHistoryForEffectiveDate": []
+    },
+    "DepartmentEffectiveDate": {
+      "DisplayValue": ""
+    },
+    "JobRoleChangeDate": {
+      "DisplayValue": "2023-05-23"
+    },
+    "ReportsTo": {
+      "DisplayValue": "",
+      "FieldHistoryForEffectiveDate": []
+    },
+    "ReportsToEffectiveDate": {
+      "DisplayValue": ""
+    },
+    "ReportsToEmployeeId": {
+      "DisplayValue": ""
+    },
+    "ReportsToEmailAddress": {
+      "DisplayValue": ""
+    },
+    "NISNumber": {
+      "DisplayValue": "",
+      "FieldHistory": []
+    },
+    "Nationality": {
+      "DisplayValue": "",
+      "FieldHistory": []
+    },
+    "EmploymentType": {
+      "DisplayValue": "",
+      "FieldHistoryForEffectiveDate": []
+    },
+    "EmploymentTypeEffectiveDate": {
+      "DisplayValue": ""
+    },
+    "EmployeeStatus": {
+      "DisplayValue": "1"
+    },
+    "HolidayAllowanceDays": {
+      "DisplayValue": "0.00"
+    },
+    "HolidayAllowanceMins": {
+      "DisplayValue": "0"
+    },
+    "NoticePeriod": {
+      "DisplayValue": "",
+      "FieldHistory": []
+    },
+    "ProbationEndDate": {
+      "DisplayValue": "2023-08-23",
+      "FieldHistory": []
+    },
+    "Gender": {
+      "DisplayValue": "Not Specified",
+      "FieldHistory": []
+    },
+    "AnalysisCode1LabelText": {
+      "DisplayValue": "",
+      "FieldHistory": []
+    },
+    "AnalysisCode2LabelText": {
+      "DisplayValue": "",
+      "FieldHistory": []
+    },
+    "ContactDetail": {
+      "Address": {
+        "DisplayValue": "",
+        "FieldHistory": []
+      },
+      "WorkPhoneNumber": {
+        "DisplayValue": "",
+        "FieldHistory": []
+      },
+      "PersonalPhoneNumber": {
+        "DisplayValue": "",
+        "FieldHistory": []
+      },
+      "PersonalEmail": {
+        "DisplayValue": "",
+        "FieldHistory": []
+      },
+      "Mobile": {
+        "DisplayValue": "",
+        "FieldHistory": []
+      }
+    },
+    "OtherContact": [],
+    "RightToWork": [],
+    "BackgroundDetail": [],
+    "BankDetail": {
+      "BankName": {
+        "DisplayValue": "",
+        "FieldHistory": []
+      },
+      "BankAddress": {
+        "DisplayValue": "",
+        "FieldHistory": []
+      },
+      "BankCode": {
+        "DisplayValue": "",
+        "FieldHistory": []
+      },
+      "AccountNumber": {
+        "DisplayValue": "",
+        "FieldHistory": []
+      },
+      "AccountName": {
+        "DisplayValue": "",
+        "FieldHistory": []
+      }
+    },
+    "EmploymentDetail": {
+      "PayrollCompany": {
+        "DisplayValue": "",
+        "FieldHistory": []
+      },
+      "PayrollID": {
+        "DisplayValue": "",
+        "FieldHistory": []
+      },
+      "TimeAndAttendanceID": {
+        "DisplayValue": "",
+        "FieldHistory": []
+      },
+      "RotaID": {
+        "DisplayValue": "",
+        "FieldHistory": []
+      },
+      "CRMID": {
+        "DisplayValue": "",
+        "FieldHistory": []
+      },
+      "ATSID": {
+        "DisplayValue": "",
+        "FieldHistory": []
+      },
+      "PerformanceID": {
+        "DisplayValue": "",
+        "FieldHistory": []
+      },
+      "BenefitsID": {
+        "DisplayValue": "",
+        "FieldHistory": []
+      },
+      "System1ID": {
+        "DisplayValue": "",
+        "FieldHistory": []
+      },
+      "System2ID": {
+        "DisplayValue": "",
+        "FieldHistory": []
+      },
+      "System3ID": {
+        "DisplayValue": "",
+        "FieldHistory": []
+      },
+      "MethodOfRecruitment": {
+        "DisplayValue": "",
+        "FieldHistory": []
+      }
+    },
+    "LeavingDate": "",
+    "ReasonForLeaving": "",
+    "EmployeeImage": "",
+    "APIColumn1": "",
+    "APIColumn2": "",
+    "APIColumn3": "",
+    "APIColumn4": "",
+    "APIColumn5": "",
+    "AdditionalreportsTo": [],
+    "UniqueKey": "28099ca7-a4ea-4a81-a3fc-cd79313977a1",
+    "lstFieldHistoryJobrole": null
+  }
+}

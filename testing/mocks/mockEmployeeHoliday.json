@@ -1,0 +1,47 @@
+{
+  "isError": false,
+  "Status": 0,
+  "Message": "The requested processed successfully.",
+  "Result": [
+    {
+      "AnnualLeaveTxnId": 139476512,
+      "StartDate": "2023-05-29",
+      "EndDate": "2023-05-30",
+      "DurationType": 1,
+      "DurationInDays": 1.00,
+      "DurationInMinutes": 450,
+      "DurationInDaysThisPeriod": 1.00,
+      "DurationInMinutesThisPeriod": 450,
+      "PartOfDay": "",
+      "StartDatePartOfTheDay": "",
+      "EndDatePartOfTheDay": "",
+      "RequesterComments": "Requesting a day off",
+      "ApproverComments": "because I can",
+      "Approver": "David Test",
+      "Status": "Declined",
+      "LastActionDateTime": "2023-05-25 13:17:58",
+      "IsToilHoliday": false,
+      "ReferenceId": ""
+    },
+    {
+      "AnnualLeaveTxnId": 139512146,
+      "StartDate": "2023-05-26",
+      "EndDate": "2023-05-26",
+      "DurationType": 1,
+      "DurationInDays": 1.00,
+      "DurationInMinutes": 450,
+      "DurationInDaysThisPeriod": 1.00,
+      "DurationInMinutesThisPeriod": 450,
+      "PartOfDay": "",
+      "StartDatePartOfTheDay": "",
+      "EndDatePartOfTheDay": "",
+      "RequesterComments": "test",
+      "ApproverComments": "Auto approved",
+      "Approver": "David Test",
+      "Status": "Approved",
+      "LastActionDateTime": "2023-05-25 12:45:12",
+      "IsToilHoliday": false,
+      "ReferenceId": ""
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "isError": false,
+  "Status": 0,
+  "Message": "The request processed successfully.",
+  "Result": [
+    {
+      "BenefitId": 12663923,
+      "Benefit": "Gym Membership",
+      "DateAwarded": "2023-05-25",
+      "ExpiryDate": "2030-05-25",
+      "Value": 1000,
+      "Comments": "A sum of money for employee",
+      "RecoverOnTermination": "Yes",
+      "Customfields": [],
+      "Files": [],
+      "Audio": [],
+      "Video": []
+    }
+  ]
+}

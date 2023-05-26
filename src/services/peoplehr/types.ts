@@ -1,3 +1,5 @@
+import type { DateType } from "../../types";
+
 export type PeopleHRAPIError = {
   error: {
     code: number,
@@ -269,4 +271,70 @@ export type Holiday = {
   LastActionDateTime: string,
   IsToilHoliday: boolean,
   ReferenceId: string,
+};
+
+export type Benefit = {
+  BenefitId: number,
+  Benefit: string, // "Gym Membership",
+  DateAwarded: DateType,
+  ExpiryDate: DateType,
+  Value: number, // 100
+  Comments: string, // "A sum of money for employee",
+  RecoverOnTermination: string, // "Yes",
+  Customfields: [],
+  Files: [],
+  Audio: [],
+  Video: []
+};
+
+export type Document =         {
+  EmployeeId: number,
+  DocumentId: number,
+  DocumentName: string, // "World_Wide_Corp_lorem.pdf",
+  URL: string, // "https://testplc.peoplehr.net/Handlers/DocumentHandler.ashx?hyZRkZqRfGq9tiIjHOYGTnYtOErg3fBAmnIL4Y74nc2Ih0GMcoPj4C7oOvy53DYCqT8eR6Ad6bOPm3n61%2bUURWhDXH1zne7sQ0XtXVcLQTGUpJ6ZbXXeytP8Bf9r2yMzFZCnEvg%2bejx1aI53WpCELsLo28lesYR8Of636QKkLWUmkSydy%2bgtQfvUSXy%2faT7I5d2Cf082MYjvnK7Aldzpr%2fOaCjdcIi%2frLHFO%2bvmy2YQ%3d",
+  Comments: string,
+  EmployeeAccess: string, // "true",
+  ManagerAccess: string, // "true",
+  SignRequired: string, // "false",
+  Category: string, // "Increment Letter",
+  AddedOn: string, // "Thu, 25 May 2023",
+  ManagerSignRequired: string, // "false"
+}
+
+export type Late = {
+  EmployeeId: number,
+  LateDate: DateType, // "2023-05-25",
+  LateMinutes: number, // 10
+  Comments: string, // "Train strike"
+};
+
+export type Qualification = {
+  QualificationId: number,
+  Qualification: string, // "MSc",
+  Subject: string, // "Computer Science ",
+  DatePassed: string, // "2023-05-01",
+  ExpiryDate: string, // "2028-05-01",
+  Comments: string,
+  Customfields: [],
+  Files: [],
+  Audio: [],
+  Video: []
+};
+
+export type Training = {
+  TrainingId: number,
+  TrainingType: string, // "Health & Safety",
+  Description: string, // "Learning office safety",
+  Importance: number,
+  Status: number,
+  PercentComplete: number,
+  TrainingDate: string, // "Sun, 21 May 2023",
+  TrainingEndDate: string, // "Sun, 28 May 2023",
+  TrainingExpiryDate: string, // "Mon, 31 Jul 2023",
+  Provider: string, // "NHS",
+  Cost: number,
+  Note: string, // "A note",
+  CustomColumn: [],
+  Audio: [],
+  Video: []
 };

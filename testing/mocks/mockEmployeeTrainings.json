@@ -1,0 +1,41 @@
+{
+  "isError": false,
+  "Status": 0,
+  "Message": "The request processed successfully.",
+  "Result": [
+    {
+      "TrainingId": 12669785,
+      "TrainingType": "Health & Safety",
+      "Description": "Learning office safety",
+      "Importance": 1,
+      "Status": 4,
+      "PercentComplete": 100,
+      "TrainingDate": "Sun, 21 May 2023",
+      "TrainingEndDate": "Sun, 28 May 2023",
+      "TrainingExpiryDate": "Mon, 31 Jul 2023",
+      "Provider": "NHS",
+      "Cost": 100,
+      "Note": "A note",
+      "CustomColumn": [],
+      "Audio": [],
+      "Video": []
+    },
+    {
+      "TrainingId": 12671607,
+      "TrainingType": "Fire Safety",
+      "Description": "Para-pam-pam",
+      "Importance": 2,
+      "Status": 1,
+      "PercentComplete": 100,
+      "TrainingDate": "",
+      "TrainingEndDate": "",
+      "TrainingExpiryDate": "",
+      "Provider": "",
+      "Cost": 0,
+      "Note": "",
+      "CustomColumn": [],
+      "Audio": [],
+      "Video": []
+    }
+  ]
+}
