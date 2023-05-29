@@ -6,7 +6,7 @@ import size from "lodash/size";
 import filter from "lodash/filter";
 import concat from "lodash/concat";
 import format from "date-fns/format";
-import addMonths from "date-fns/addMonths";
+import subMonths from "date-fns/subMonths";
 import {
   useQueryWithClient,
   useDeskproLatestAppContext,
@@ -25,6 +25,7 @@ import {
 import { QueryKey } from "../../query";
 import type {
   Maybe,
+  DateType,
   EmployeeType,
   TicketContext,
 } from "../../types";
@@ -39,7 +40,11 @@ import type {
   Qualification,
 } from "../../services/peoplehr/types";
 
-type UseEmployee = () => {
+type EmployeesOptions = {
+  holidaysPeriodMax: DateType
+};
+
+type UseEmployee = (options: EmployeesOptions) => {
   employee: Maybe<EmployeeType>,
   salary: Maybe<Salary>,
   holidays: Maybe<Holiday[]>,
@@ -51,7 +56,7 @@ type UseEmployee = () => {
   isLoading: boolean;
 };
 
-const useEmployee: UseEmployee = () => {
+const useEmployee: UseEmployee = ({ holidaysPeriodMax }) => {
   const { context } = useDeskproLatestAppContext() as { context: TicketContext };
   const employeeEmails = uniq(filter(concat(
     get(context, ["data", "user", "primaryEmail"]),
@@ -91,11 +96,11 @@ const useEmployee: UseEmployee = () => {
   );
 
   const holidays = useQueryWithClient(
-    [QueryKey.EMPLOYEE_HOLIDAY, get(employee, ["id"]) as string],
+    [QueryKey.EMPLOYEE_HOLIDAY, get(employee, ["id"]) as string, holidaysPeriodMax],
     (client) => getEmployeeHolidayService(client, {
       employeeId: get(employee, ["id"]) as string,
       start: format(new Date(), API_FORMAT),
-      end: format(addMonths(new Date(), 6), API_FORMAT)
+      end: holidaysPeriodMax,
     }),
     { enabled: Boolean(get(employee, ["id"])) }
   );
@@ -116,7 +121,7 @@ const useEmployee: UseEmployee = () => {
     [QueryKey.EMPLOYEE_LATE, get(employee, ["id"]) as string],
     (client) => getEmployeeLateService(client, {
       employeeId: get(employee, ["id"]) as string,
-      start: "2023-01-01",
+      start: format(subMonths(new Date(), 2), API_FORMAT),
       end: format(new Date(), API_FORMAT),
     }),
     { enabled: Boolean(get(employee, ["id"])) },

@@ -7,7 +7,7 @@ const getEmployeeDocumentsService = (
   employeeId: Employee["EmployeeId"]["DisplayValue"],
 ) => {
   return baseRequest<Document[]>(client, {
-    url: "/Benefit",
+    url: "/EmployeeDocument",
     data: {
       Action: "GetAllDocument",
       EmployeeId: employeeId,

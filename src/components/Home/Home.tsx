@@ -30,6 +30,7 @@ type Props = {
   lateness: Maybe<Late[]>,
   qualifications: Maybe<Qualification[]>,
   trainings: Maybe<Training[]>,
+  onLoadNextHolidays: () => void,
 };
 
 const Home: FC<Props> = ({
@@ -41,6 +42,7 @@ const Home: FC<Props> = ({
   documents,
   trainings,
   qualifications,
+  onLoadNextHolidays,
 }) => {
   if (!employee) {
     return <NoEmployeeFound/>;
@@ -50,7 +52,7 @@ const Home: FC<Props> = ({
     <>
       <EmployeeInfo employee={employee} salary={salary} />
       <HorizontalDivider/>
-      <Holidays holidays={holidays} />
+      <Holidays holidays={holidays} onLoadNextHolidays={onLoadNextHolidays} />
       <Documents documents={documents} />
       <Lateness lateness={lateness} />
       <Benefits benefits={benefits} salary={salary} />
