@@ -1,7 +1,7 @@
 {
   "name": "@deskpro-apps/people-hr",
-  "title": "PeopleHR App",
-  "description": "My Deskpro app",
+  "title": "People HR",
+  "description": "View your employees' People HR data alongside your interactions with them to streamline your HR management.",
   "version": "0.0.2",
   "scope": "agent",
   "isSingleInstall": false,

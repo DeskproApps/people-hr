@@ -1,4 +1,6 @@
-My App
+People HR
 ======
 
-todo: add a description that will appear alongside your app in Deskpro admin
+***Link employees to users:*** Upon viewing a ticket, this integration will automatically search for your employee and display their information in the panel next to your ticket
+
+***View employee data:*** View key information about your employee's role, time off requests, training, qualifications and more without having to leave Deskpro

@@ -2,3 +2,8 @@ export { PeopleHRError } from "./PeopleHRError";
 export { getEmployeesService } from "./getEmployeesService";
 export { getEmployeeSalaryService } from "./getEmployeeSalaryService";
 export { getEmployeeHolidayService } from "./getEmployeeHolidayService";
+export { getEmployeeBenefitService } from "./getEmployeeBenefitService";
+export { getEmployeeDocumentsService } from "./getEmployeeDocumentsService";
+export { getEmployeeLateService } from "./getEmployeeLateService";
+export { getEmployeeQualificationsService } from "./getEmployeeQualificationsService";
+export { getEmployeeTrainingsService } from "./getEmployeeTrainingsService";

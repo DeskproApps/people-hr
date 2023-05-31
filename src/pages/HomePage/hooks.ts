@@ -6,7 +6,7 @@ import size from "lodash/size";
 import filter from "lodash/filter";
 import concat from "lodash/concat";
 import format from "date-fns/format";
-import addMonths from "date-fns/addMonths";
+import subMonths from "date-fns/subMonths";
 import {
   useQueryWithClient,
   useDeskproLatestAppContext,
@@ -14,25 +14,49 @@ import {
 import { API_FORMAT } from "../../constants";
 import {
   getEmployeesService,
+  getEmployeeLateService,
   getEmployeeSalaryService,
   getEmployeeHolidayService,
+  getEmployeeBenefitService,
+  getEmployeeDocumentsService,
+  getEmployeeTrainingsService,
+  getEmployeeQualificationsService,
 } from "../../services/peoplehr";
 import { QueryKey } from "../../query";
 import type {
   Maybe,
+  DateType,
   EmployeeType,
   TicketContext,
 } from "../../types";
-import type { Employee, Salary, Holiday } from "../../services/peoplehr/types";
+import type {
+  Late,
+  Salary,
+  Holiday,
+  Benefit,
+  Document,
+  Employee,
+  Training,
+  Qualification,
+} from "../../services/peoplehr/types";
 
-type UseEmployee = () => {
+type EmployeesOptions = {
+  holidaysPeriodMax: DateType
+};
+
+type UseEmployee = (options: EmployeesOptions) => {
   employee: Maybe<EmployeeType>,
   salary: Maybe<Salary>,
   holidays: Maybe<Holiday[]>,
+  benefits: Maybe<Benefit[]>,
+  documents: Maybe<Document[]>,
+  lateness: Maybe<Late[]>,
+  trainings: Maybe<Training[]>,
+  qualifications: Maybe<Qualification[]>,
   isLoading: boolean;
 };
 
-const useEmployee: UseEmployee = () => {
+const useEmployee: UseEmployee = ({ holidaysPeriodMax }) => {
   const { context } = useDeskproLatestAppContext() as { context: TicketContext };
   const employeeEmails = uniq(filter(concat(
     get(context, ["data", "user", "primaryEmail"]),
@@ -72,20 +96,66 @@ const useEmployee: UseEmployee = () => {
   );
 
   const holidays = useQueryWithClient(
-    [QueryKey.EMPLOYEE_HOLIDAY, get(employee, ["id"]) as string],
+    [QueryKey.EMPLOYEE_HOLIDAY, get(employee, ["id"]) as string, holidaysPeriodMax],
     (client) => getEmployeeHolidayService(client, {
       employeeId: get(employee, ["id"]) as string,
       start: format(new Date(), API_FORMAT),
-      end: format(addMonths(new Date(), 6), API_FORMAT)
+      end: holidaysPeriodMax,
     }),
     { enabled: Boolean(get(employee, ["id"])) }
   );
 
+  const benefits = useQueryWithClient(
+    [QueryKey.EMPLOYEE_BENEFITS, get(employee, ["id"]) as string],
+    (client) => getEmployeeBenefitService(client, get(employee, ["id"]) as string),
+    { enabled: Boolean(get(employee, ["id"])) },
+  );
+
+  const documents = useQueryWithClient(
+    [QueryKey.EMPLOYEE_DOCUMENTS, get(employee, ["id"]) as string],
+    (client) => getEmployeeDocumentsService(client, get(employee, ["id"]) as string),
+    { enabled: Boolean(get(employee, ["id"])) },
+  );
+
+  const lateness = useQueryWithClient(
+    [QueryKey.EMPLOYEE_LATE, get(employee, ["id"]) as string],
+    (client) => getEmployeeLateService(client, {
+      employeeId: get(employee, ["id"]) as string,
+      start: format(subMonths(new Date(), 2), API_FORMAT),
+      end: format(new Date(), API_FORMAT),
+    }),
+    { enabled: Boolean(get(employee, ["id"])) },
+  );
+
+  const qualifications = useQueryWithClient(
+    [QueryKey.EMPLOYEE_QUALIFICATIONS, get(employee, ["id"]) as string],
+    (client) => getEmployeeQualificationsService(client, get(employee, ["id"]) as string),
+    { enabled: Boolean(get(employee, ["id"])) },
+  );
+
+  const trainings = useQueryWithClient(
+    [QueryKey.EMPLOYEE_TRAININGS, get(employee, ["id"]) as string],
+    (client) => getEmployeeTrainingsService(client, get(employee, ["id"]) as string),
+    { enabled: Boolean(get(employee, ["id"])) },
+  );
+
   return {
-    isLoading: [employees, salary, holidays].some(({ isFetching }) => isFetching),
+    isLoading: [
+      salary,
+      holidays,
+      benefits,
+      lateness,
+      employees,
+      documents,
+    ].some(({ isFetching }) => isFetching),
     employee,
     salary: get(salary, ["data", "Result", 0]),
     holidays: get(holidays, ["data", "Result"], []) || [],
+    benefits: get(benefits, ["data", "Result"], []) || [],
+    documents: get(documents, ["data", "Result"], []) || [],
+    lateness: get(lateness, ["data", "Result"], []) || [],
+    qualifications: get(qualifications, ["data", "Result"], []) || [],
+    trainings: get(trainings, ["data", "Result"], []) || [],
   };
 }
 

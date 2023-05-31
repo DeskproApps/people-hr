@@ -1,11 +1,10 @@
 import get from "lodash/get";
-import round from "lodash/round";
 import { Title } from "@deskpro/app-sdk";
-import { Container, Property } from "../common";
-import { getFullName } from "../../utils";
+import { Container, Property } from "../../common";
+import { getFullName, getSalary } from "../../../utils";
 import type { FC } from "react";
-import type { EmployeeType, Maybe } from "../../types";
-import type { Salary } from "../../services/peoplehr/types";
+import type { EmployeeType, Maybe } from "../../../types";
+import type { Salary } from "../../../services/peoplehr/types";
 
 type Props = {
   employee: Maybe<EmployeeType>,
@@ -13,9 +12,6 @@ type Props = {
 };
 
 const EmployeeInfo: FC<Props> = ({ employee, salary }) => {
-  const currency = get(salary, ["Currency"]);
-  const salaryAmount = get(salary, ["TotalSalaryAmount"]);
-
   return (
     <Container>
       <Title title={getFullName(employee)} />
@@ -41,7 +37,7 @@ const EmployeeInfo: FC<Props> = ({ employee, salary }) => {
       />
       <Property
         label="Salary"
-        text={(currency && salaryAmount) ? `${currency} ${round(Number(salaryAmount), 2)}` : "-"}
+        text={getSalary(salary)}
       />
     </Container>
   );

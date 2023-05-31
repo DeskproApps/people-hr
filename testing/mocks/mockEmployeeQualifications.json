@@ -1,0 +1,19 @@
+{
+  "isError": false,
+  "Status": 0,
+  "Message": "The request processed successfully.",
+  "Result": [
+    {
+      "QualificationId": 12669656,
+      "Qualification": "MSc",
+      "Subject": "Computer Science ",
+      "DatePassed": "2023-05-01",
+      "ExpiryDate": "2028-05-01",
+      "Comments": "",
+      "Customfields": [],
+      "Files": [],
+      "Audio": [],
+      "Video": []
+    }
+  ]
+}

@@ -13,7 +13,12 @@ const queryClient = new QueryClient({
 enum QueryKey {
   EMPLOYEES = "employees",
   EMPLOYEE_SALARY = "employeeSalary",
-  EMPLOYEE_HOLIDAY = "employeeHoliday"
+  EMPLOYEE_HOLIDAY = "employeeHoliday",
+  EMPLOYEE_BENEFITS = "employeeBenefits",
+  EMPLOYEE_DOCUMENTS = "employeeDocuments",
+  EMPLOYEE_LATE = "employeeLate",
+  EMPLOYEE_QUALIFICATIONS = "employeeQualifications",
+  EMPLOYEE_TRAININGS = "employeeTrainings",
 }
 
 export { queryClient, QueryKey };

@@ -1,0 +1,20 @@
+{
+  "isError": false,
+  "Status": 0,
+  "Message": "The requested processed successfully.",
+  "Result": [
+    {
+      "EmployeeId": 2850136,
+      "DocumentId": 34067785,
+      "DocumentName": "World_Wide_Corp_lorem.pdf",
+      "URL": "https://testplc.peoplehr.net/Handlers/DocumentHandler.ashx?hyZRkZqRfGq9tiIjHOYGTnYtOErg3fBAmnIL4Y74nc2Ih0GMcoPj4C7oOvy53DYCqT8eR6Ad6bOPm3n61%2bUURWhDXH1zne7sQ0XtXVcLQTGUpJ6ZbXXeytP8Bf9r2yMzFZCnEvg%2bejx1aI53WpCELsLo28lesYR8Of636QKkLWUmkSydy%2bgtQfvUSXy%2faT7I5d2Cf082MYjvnK7Aldzpr%2fOaCjdcIi%2frLHFO%2bvmy2YQ%3d",
+      "Comments": "",
+      "EmployeeAccess": "true",
+      "ManagerAccess": "true",
+      "SignRequired": "false",
+      "Category": "Increment Letter",
+      "AddedOn": "Thu, 25 May 2023",
+      "ManagerSignRequired": "false"
+    }
+  ]
+}

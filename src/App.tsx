@@ -47,6 +47,7 @@ const App: FC = () => {
       <LoadingSpinner/>
     );
   }
+
   return (
     <>
       <Routes>
