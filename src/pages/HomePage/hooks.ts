@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 import get from "lodash/get";
-import uniq from "lodash/uniq";
+// import uniq from "lodash/uniq";
 import find from "lodash/find";
 import size from "lodash/size";
-import filter from "lodash/filter";
-import concat from "lodash/concat";
+// import filter from "lodash/filter";
+// import concat from "lodash/concat";
 import format from "date-fns/format";
 import subMonths from "date-fns/subMonths";
+import { useQuery as useQueryWithClient } from "@tanstack/react-query";
 import {
-  useQueryWithClient,
-  useDeskproLatestAppContext,
+  // useQueryWithClient,
+  // useDeskproLatestAppContext,
 } from "@deskpro/app-sdk";
 import { API_FORMAT } from "../../constants";
 import {
@@ -27,7 +28,7 @@ import type {
   Maybe,
   DateType,
   EmployeeType,
-  TicketContext,
+  // TicketContext,
 } from "../../types";
 import type {
   Late,
@@ -57,11 +58,11 @@ type UseEmployee = (options: EmployeesOptions) => {
 };
 
 const useEmployee: UseEmployee = ({ holidaysPeriodMax }) => {
-  const { context } = useDeskproLatestAppContext() as { context: TicketContext };
-  const employeeEmails = uniq(filter(concat(
+  // const { context } = useDeskproLatestAppContext() as { context: TicketContext };
+  const employeeEmails = ["ilia.makarov@me.com"]/*uniq(filter(concat(
     get(context, ["data", "user", "primaryEmail"]),
     get(context, ["data", "user", "emails"]),
-  ), Boolean));
+  ), Boolean))*/;
   const [employee, setEmployee] = useState<Maybe<EmployeeType>>(null);
 
   const employees = useQueryWithClient(

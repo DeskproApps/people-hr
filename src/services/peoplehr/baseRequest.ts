@@ -13,7 +13,7 @@ const baseRequest: Request = async (client, {
   queryParams = {},
   headers,
 }) => {
-  const dpFetch = await proxyFetch(client);
+  // const dpFetch = await proxyFetch(client);
 
   const baseUrl = rawUrl ? rawUrl : `${BASE_URL}${url}`;
   const params = getQueryParams(queryParams);
@@ -34,7 +34,8 @@ const baseRequest: Request = async (client, {
     };
   }
 
-  const res = await dpFetch(requestUrl, options);
+  // const res = await dpFetch(requestUrl, options);
+  const res = await fetch(requestUrl, options);
 
   if (res.status < 200 || res.status > 399) {
     throw new PeopleHRError({
