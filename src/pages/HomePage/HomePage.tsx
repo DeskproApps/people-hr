@@ -7,7 +7,8 @@ import { LoadingSpinner } from "@deskpro/app-sdk";
 import { useSetTitle } from "../../hooks";
 import { useEmployee } from "./hooks";
 import { API_FORMAT } from "../../constants";
-import { Home } from "../../components";
+import { /*Home, */PageBuilder } from "../../components";
+import { EmployeeFullName, Salary, Text } from "../../components/blocks";
 import type { FC } from "react";
 
 const HomePage: FC = () => {
@@ -40,17 +41,94 @@ const HomePage: FC = () => {
     );
   }
 
+  // const storeConfig = {
+  //   employee: {
+  //     endpoint: {
+  //       url: "https://api.peoplehr.net/Employee",
+  //       method: "POST",
+  //       data: { Action: "GetAllEmployeeDetail" }
+  //     },
+  //     pathInResponse: ["Result"],
+  //     expression: {
+  //       if: {
+  //         properties: {
+  //           "$ref": [
+  //             ["context", "data", "user", "primaryEmail"],
+  //             ["context", "data", "user", "emails"],
+  //           ],
+  //         },
+  //       }
+  //     }
+  //   },
+  // };
+
+  // return (<Home {...store} />);
   return (
-    <Home
-      employee={employee}
-      salary={salary}
-      holidays={holidays}
-      benefits={benefits}
-      documents={documents}
-      lateness={lateness}
-      qualifications={qualifications}
-      trainings={trainings}
-      onLoadNextHolidays={onLoadNextHolidays}
+    <PageBuilder
+      store={{
+        employee: employee,
+        salary: salary,
+        holidays: holidays,
+        benefits: benefits,
+        documents: documents,
+        lateness: lateness,
+        qualifications: qualifications,
+        trainings: trainings,
+        onLoadNextHolidays: onLoadNextHolidays,
+      }}
+      blocksMap={{
+        fullName: EmployeeFullName,
+        text: Text,
+        salary: Salary,
+      }}
+      config={{
+        blocks: {
+          name: {
+            type: "fullName",
+            keyInStore: "employee",
+            pathInStore: ["employee"],
+          },
+          email: {
+            type: "text",
+            label: "Email address",
+            pathInStore: ["employee", "email"],
+          },
+          department: {
+            type: "text",
+            label: "Department",
+            pathInStore: ["employee", "department"],
+          },
+          role: {
+            type: "text",
+            label: "Role",
+            pathInStore: ["employee", "role"],
+          },
+          reportsTo: {
+            type: "text",
+            label: "Reports to",
+            pathInStore: ["employee", "reportsTo"],
+          },
+          gender: {
+            type: "text",
+            label: "Gender",
+            pathInStore: ["employee", "gender"],
+          },
+          salary: {
+            type: "salary",
+            label: "Salary",
+            pathInStore: ["salary"],
+          },
+        },
+        structure: [
+          ["name"],
+          ["email"],
+          ["department"],
+          ["role"],
+          ["reportsTo"],
+          ["gender"],
+          ["salary"],
+        ],
+      }}
     />
   );
 };

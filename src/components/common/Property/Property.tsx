@@ -1,7 +1,6 @@
 import { isValidElement } from "react";
 import styled from "styled-components";
-import { P5 } from "@deskpro/app-sdk";
-import { TSpan } from "@deskpro/deskpro-ui";
+import { P5, TSpan } from "@deskpro/deskpro-ui";
 import type { FC, ReactNode } from "react";
 import type { Props } from "./types";
 
@@ -16,16 +15,17 @@ const Container = styled.div<Props>`
 const Property: FC<Props> = ({ text, label, marginBottom = 10 }) => {
   let textBlock: ReactNode = (<P5>-</P5>);
 
-  if (typeof text === "string" || typeof text === "number") {
+  /*if (typeof text === "string" || typeof text === "number") {
     textBlock = (<P5>{text}</P5>);
-  } else if (isValidElement(text)) {
+  } else*/ if (isValidElement(text)) {
     textBlock = text;
   }
 
   return (
     <Container marginBottom={marginBottom}>
       {label && <Label type="p8">{label}</Label>}
-      {textBlock && textBlock}
+      {label && <br/>}
+      {textBlock && <TSpan type="p5">{text}</TSpan>}
     </Container>
   );
 }
