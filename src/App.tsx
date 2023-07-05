@@ -8,7 +8,7 @@ import {
   useDeskproAppEvents,
 } from "@deskpro/app-sdk";
 import { isNavigatePayload } from "./utils";
-import { HomePage, LoadingAppPage } from "./pages";
+import { HomePage/*, LoadingAppPage*/ } from "./pages";
 import type { FC } from "react";
 import type { EventPayload } from "./types";
 
@@ -39,11 +39,11 @@ const App: FC = () => {
     onElementEvent: debounceElementEvent,
   }, [client]);
 
-  // if (!client) {
-  //   return (
-  //     <LoadingSpinner/>
-  //   );
-  // }
+  if (!client) {
+    return (
+      <LoadingSpinner/>
+    );
+  }
 
   return (
     <>

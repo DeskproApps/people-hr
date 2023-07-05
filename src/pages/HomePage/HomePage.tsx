@@ -7,7 +7,7 @@ import { LoadingSpinner } from "@deskpro/app-sdk";
 import { useSetTitle } from "../../hooks";
 import { useEmployee } from "./hooks";
 import { API_FORMAT } from "../../constants";
-import { Home, PageBuilder } from "../../components";
+import { /*Home, */PageBuilder } from "../../components";
 import { EmployeeFullName, Salary, Text } from "../../components/blocks";
 import type { FC } from "react";
 
@@ -41,21 +41,41 @@ const HomePage: FC = () => {
     );
   }
 
-  const store = {
-    employee: employee,
-    salary: salary,
-    holidays: holidays,
-    benefits: benefits,
-    documents: documents,
-    lateness: lateness,
-    qualifications: qualifications,
-    trainings: trainings,
-    onLoadNextHolidays: onLoadNextHolidays,
-  };
+  // const storeConfig = {
+  //   employee: {
+  //     endpoint: {
+  //       url: "https://api.peoplehr.net/Employee",
+  //       method: "POST",
+  //       data: { Action: "GetAllEmployeeDetail" }
+  //     },
+  //     pathInResponse: ["Result"],
+  //     expression: {
+  //       if: {
+  //         properties: {
+  //           "$ref": [
+  //             ["context", "data", "user", "primaryEmail"],
+  //             ["context", "data", "user", "emails"],
+  //           ],
+  //         },
+  //       }
+  //     }
+  //   },
+  // };
 
   // return (<Home {...store} />);
   return (
     <PageBuilder
+      store={{
+        employee: employee,
+        salary: salary,
+        holidays: holidays,
+        benefits: benefits,
+        documents: documents,
+        lateness: lateness,
+        qualifications: qualifications,
+        trainings: trainings,
+        onLoadNextHolidays: onLoadNextHolidays,
+      }}
       blocksMap={{
         fullName: EmployeeFullName,
         text: Text,
@@ -65,51 +85,38 @@ const HomePage: FC = () => {
         blocks: {
           name: {
             type: "fullName",
-            props: {
-              pathInStore: ["employee"],
-            },
+            keyInStore: "employee",
+            pathInStore: ["employee"],
           },
           email: {
             type: "text",
-            props: {
-              label: "Email address",
-              pathInStore: ["employee", "email"],
-            },
+            label: "Email address",
+            pathInStore: ["employee", "email"],
           },
           department: {
             type: "text",
-            props: {
-              label: "Department",
-              pathInStore: ["employee", "department"],
-            },
+            label: "Department",
+            pathInStore: ["employee", "department"],
           },
           role: {
             type: "text",
-            props: {
-              label: "Role",
-              pathInStore: ["employee", "role"],
-            },
+            label: "Role",
+            pathInStore: ["employee", "role"],
           },
           reportsTo: {
             type: "text",
-            props: {
-              label: "Reports to",
-              pathInStore: ["employee", "reportsTo"],
-            },
+            label: "Reports to",
+            pathInStore: ["employee", "reportsTo"],
           },
           gender: {
             type: "text",
-            props: {
-              label: "Gender",
-              pathInStore: ["employee", "gender"],
-            },
+            label: "Gender",
+            pathInStore: ["employee", "gender"],
           },
           salary: {
             type: "salary",
-            props: {
-              label: "Salary",
-              pathInStore: ["salary"],
-            }
+            label: "Salary",
+            pathInStore: ["salary"],
           },
         },
         structure: [
@@ -122,7 +129,6 @@ const HomePage: FC = () => {
           ["salary"],
         ],
       }}
-      store={store}
     />
   );
 };
