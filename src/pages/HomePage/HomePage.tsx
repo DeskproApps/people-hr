@@ -41,14 +41,44 @@ const HomePage: FC = () => {
     );
   }
 
-  // const storeConfig = {
-  //   employee: {
-  //     endpoint: {
-  //       url: "https://api.peoplehr.net/Employee",
-  //       method: "POST",
-  //       data: { Action: "GetAllEmployeeDetail" }
-  //     },
-  //     pathInResponse: ["Result"],
+  const Result = [
+    { id: "001", email: "armen.tamzarian@me.com" },
+    { id: "002", email: "vasia.pupkin@me.com" },
+  ];
+
+  const storeConfig = {
+    employee: {
+      endpoint: {
+        url: "https://api.peoplehr.net/Employee",
+        method: "POST",
+        body: { Action: "GetAllEmployeeDetail" }
+      },
+      pathInResponse: ["Result"],
+      /*find: {
+        type: "array", // array|object
+        key: "email",
+        value: [
+          ["$context", "data", "user", "primaryEmail"],
+          ["$context", "data", "user", "emails"],
+        ],
+      },*/
+      find: {
+        key: "user.email",
+        value: {
+          type: "array", // array|object
+          source: SourceType.Context,
+          key: "email",
+          value: [
+            ["data", "user", "primaryEmail"],
+            ["data", "user", "emails"],
+          ],
+          result: {
+            true: "/employee",
+            false: "/no_found",
+          }
+        },
+      }
+
   //     expression: {
   //       if: {
   //         properties: {
@@ -59,8 +89,8 @@ const HomePage: FC = () => {
   //         },
   //       }
   //     }
-  //   },
-  // };
+    },
+  };
 
   // return (<Home {...store} />);
   return (
@@ -86,7 +116,8 @@ const HomePage: FC = () => {
           name: {
             type: "fullName",
             keyInStore: "employee",
-            pathInStore: ["employee"],
+            // pathInStore: ["employee"],
+            get: ["employee"],
           },
           email: {
             type: "text",

@@ -70,7 +70,7 @@ const useEmployee: UseEmployee = ({ holidaysPeriodMax }) => {
     {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      select: (data) => (get(data, ["Result"], []) || []).map((employee: Employee) => ({
+      select: (data) => (Array.isArray(get(data, ["Result"], [])) ? get(data, ["Result"], []) : []).map((employee: Employee) => ({
         id: get(employee, ["EmployeeId", "DisplayValue"], "-") || "-",
         firstName: get(employee, ["FirstName", "DisplayValue"]),
         lastName: get(employee, ["LastName", "DisplayValue"]),
