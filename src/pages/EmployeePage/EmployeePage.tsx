@@ -2,16 +2,17 @@ import { useCallback } from "react";
 import parse from "date-fns/parse";
 import format from "date-fns/format";
 import addMonths from "date-fns/addMonths";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useParams } from "react-router-dom";
 import { LoadingSpinner } from "@deskpro/app-sdk";
 import { useSetTitle } from "../../hooks";
 import { useEmployee } from "./hooks";
 import { API_FORMAT } from "../../constants";
-import { /*Home, */PageBuilder } from "../../components";
+import { /*Employee, */PageBuilder } from "../../components";
 import { EmployeeFullName, Salary, Text } from "../../components/blocks";
 import type { FC } from "react";
 
-const HomePage: FC = () => {
+const EmployeePage: FC = () => {
+  const { employeeId } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
   const holidaysPeriodMax = searchParams.get("holidaysPeriodMax") || format(addMonths(new Date(), 6), API_FORMAT);
   const {
@@ -24,7 +25,7 @@ const HomePage: FC = () => {
     isLoading,
     trainings,
     qualifications,
-  } = useEmployee({ holidaysPeriodMax });
+  } = useEmployee({ employeeId, holidaysPeriodMax });
 
   const onLoadNextHolidays = useCallback(() => {
     const currentPeriodMax = parse(holidaysPeriodMax, API_FORMAT, new Date());
@@ -32,6 +33,18 @@ const HomePage: FC = () => {
       ["holidaysPeriodMax", format(addMonths(currentPeriodMax, 6), API_FORMAT)],
     ]);
   }, [holidaysPeriodMax, setSearchParams]);
+
+  const store = {
+    employee: employee,
+    salary: salary,
+    holidays: holidays,
+    benefits: benefits,
+    documents: documents,
+    lateness: lateness,
+    qualifications: qualifications,
+    trainings: trainings,
+    onLoadNextHolidays: onLoadNextHolidays,
+  };
 
   useSetTitle("Contact");
 
@@ -41,12 +54,9 @@ const HomePage: FC = () => {
     );
   }
 
-  const Result = [
-    { id: "001", email: "armen.tamzarian@me.com" },
-    { id: "002", email: "vasia.pupkin@me.com" },
-  ];
+  // return (<Employee {...store} />);
 
-  const storeConfig = {
+  /*const storeConfig = {
     employee: {
       endpoint: {
         url: "https://api.peoplehr.net/Employee",
@@ -54,19 +64,19 @@ const HomePage: FC = () => {
         body: { Action: "GetAllEmployeeDetail" }
       },
       pathInResponse: ["Result"],
-      /*find: {
+      /!*find: {
         type: "array", // array|object
         key: "email",
         value: [
           ["$context", "data", "user", "primaryEmail"],
           ["$context", "data", "user", "emails"],
         ],
-      },*/
+      },*!/
       find: {
         key: "user.email",
         value: {
           type: "array", // array|object
-          source: SourceType.Context,
+          // source: SourceType.Context,
           key: "email",
           value: [
             ["data", "user", "primaryEmail"],
@@ -79,33 +89,21 @@ const HomePage: FC = () => {
         },
       }
 
-  //     expression: {
-  //       if: {
-  //         properties: {
-  //           "$ref": [
-  //             ["context", "data", "user", "primaryEmail"],
-  //             ["context", "data", "user", "emails"],
-  //           ],
-  //         },
-  //       }
-  //     }
+      //     expression: {
+      //       if: {
+      //         properties: {
+      //           "$ref": [
+      //             ["context", "data", "user", "primaryEmail"],
+      //             ["context", "data", "user", "emails"],
+      //           ],
+      //         },
+      //       }
+      //     }
     },
-  };
-
-  // return (<Home {...store} />);
+  };*/
   return (
     <PageBuilder
-      store={{
-        employee: employee,
-        salary: salary,
-        holidays: holidays,
-        benefits: benefits,
-        documents: documents,
-        lateness: lateness,
-        qualifications: qualifications,
-        trainings: trainings,
-        onLoadNextHolidays: onLoadNextHolidays,
-      }}
+      store={store}
       blocksMap={{
         fullName: EmployeeFullName,
         text: Text,
@@ -115,9 +113,7 @@ const HomePage: FC = () => {
         blocks: {
           name: {
             type: "fullName",
-            keyInStore: "employee",
-            // pathInStore: ["employee"],
-            get: ["employee"],
+            pathInStore: ["employee"],
           },
           email: {
             type: "text",
@@ -164,4 +160,4 @@ const HomePage: FC = () => {
   );
 };
 
-export { HomePage };
+export { EmployeePage };

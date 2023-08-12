@@ -1,3 +1,3 @@
 export { ErrorBlock, ErrorFallback } from "./Error";
-export { Home } from "./Home";
+export { Employee } from "./Employee";
 export { PageBuilder } from "./PageBuilder";

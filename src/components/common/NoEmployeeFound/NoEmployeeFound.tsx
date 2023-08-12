@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { P8 } from "@deskpro/deskpro-ui";
 import { Title } from "@deskpro/app-sdk";
-import { Container } from "../common";
+import { Container } from "../Layout";
 import type { FC } from "react";
 
 const Text = styled(P8)`
