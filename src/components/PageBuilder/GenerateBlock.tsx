@@ -15,7 +15,7 @@ type Props = {
 
 const GenerateBlock: FC<Props> = ({ blockConfig, Component, store }) => {
   const blockType = get(blockConfig, ["type"]);
-  const blockProps = get(blockConfig, ["props"]);
+  const { value, ...blockProps } = get(blockConfig, ["props"]) || {};
   const label = get(blockConfig, ["label"]);
   const pathInStore = get(blockConfig, ["pathInStore"], "");
 
@@ -37,7 +37,7 @@ const GenerateBlock: FC<Props> = ({ blockConfig, Component, store }) => {
       text={(
         <Component
           {...blockProps}
-          value={get(store, pathInStore, "-")}
+          value={value || get(store, pathInStore, "-") || "-"}
         />
       )}
     />

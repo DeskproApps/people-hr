@@ -7,7 +7,6 @@ import type { Request } from "../../types";
 
 const baseRequest: Request = async (client, {
   url,
-  rawUrl,
   data = {},
   method = "POST",
   queryParams = {},
@@ -15,7 +14,7 @@ const baseRequest: Request = async (client, {
 }) => {
   const dpFetch = await proxyFetch(client);
 
-  const baseUrl = rawUrl ? rawUrl : `${BASE_URL}${url}`;
+  const baseUrl = `${BASE_URL}${url}`;
   const params = getQueryParams(queryParams);
 
   const requestUrl = `${baseUrl}${params}`;

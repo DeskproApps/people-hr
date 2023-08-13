@@ -1,21 +1,26 @@
 import type { FC } from "react";
-import type { ParamKeyValuePair } from "react-router-dom";
-import type { Dict } from "../../types";
+import type { Dict, RequestParams } from "../../types";
 
-export type Endpoint = {
-  url: string,
-  method?: "POST",
-  data?: Dict<unknown>,
-  queryParams?: string|Dict<string>|ParamKeyValuePair[],
-};
+export enum SourceType {
+  Context = "#context",
+  API = "#api",
+}
+
+export type SourceAPI = {
+  source: SourceType.API,
+} & RequestParams;
+
+export type SourceContext = {
+  source: SourceType.Context,
+} & { /* Deskpro Context */ };
+
+export type SourceConfig = SourceAPI | SourceContext;
 
 export type BlockSet = {
   type: string;
   label?: string,
-  keyInStore?: string,
   pathInStore?: string|string[],
-  endpoint?: Endpoint,
-  props?: Dict<unknown>;
+  props?: { value?: unknown } & Dict<unknown>;
 };
 
 export type Props = {
@@ -25,5 +30,5 @@ export type Props = {
   };
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   blocksMap: Record<string, FC<any>>,
-  store: Dict<unknown>,
+  store?: Dict<SourceConfig>,
 };

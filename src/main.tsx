@@ -23,7 +23,7 @@ root.render((
         <QueryClientProvider client={queryClient}>
           <Suspense fallback={<LoadingSpinner/>}>
             <ErrorBoundary FallbackComponent={ErrorFallback}>
-              <App />
+              <App/>
             </ErrorBoundary>
           </Suspense>
         </QueryClientProvider>

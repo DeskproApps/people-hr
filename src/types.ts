@@ -20,14 +20,12 @@ export type DateType = string;
 export type ApiRequestMethod = "GET";
 
 export type RequestParams = {
-  url?: string,
-  rawUrl?: string,
+  url: string,
   method?: ApiRequestMethod,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data?: any,
   headers?: Dict<string>,
   queryParams?: string|Dict<string>|ParamKeyValuePair[],
-  settings?: Maybe<Settings>,
 };
 
 export type Request = <T>(

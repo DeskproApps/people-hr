@@ -1,5 +1,7 @@
 import get from "lodash/get";
 import isEmpty from "lodash/isEmpty";
+import { useParams } from "react-router-dom";
+import { useStore } from "./useStore";
 import { GenerateBlock } from "./GenerateBlock";
 import type { FC } from "react";
 import type { Props } from "./types";
@@ -9,6 +11,9 @@ const PageBuilder: FC<Props> = ({
   blocksMap,
   config: { structure, blocks },
 }) => {
+  const routerParams = useParams();
+  const pageStore = useStore(routerParams, store);
+
   if (!Array.isArray(structure) ||isEmpty(structure)) {
     // eslint-disable-next-line no-console
     console.error("PageBuilder: wrong config - empty structure");
@@ -41,7 +46,7 @@ const PageBuilder: FC<Props> = ({
             blockName={name}
             blockConfig={blockConfig}
             Component={Component}
-            store={store}
+            store={pageStore}
           />
         );
       })}

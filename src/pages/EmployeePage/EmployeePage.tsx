@@ -7,8 +7,7 @@ import { LoadingSpinner } from "@deskpro/app-sdk";
 import { useSetTitle } from "../../hooks";
 import { useEmployee } from "./hooks";
 import { API_FORMAT } from "../../constants";
-import { /*Employee, */PageBuilder } from "../../components";
-import { EmployeeFullName, Salary, Text } from "../../components/blocks";
+import { Employee } from "../../components";
 import type { FC } from "react";
 
 const EmployeePage: FC = () => {
@@ -54,110 +53,7 @@ const EmployeePage: FC = () => {
     );
   }
 
-  // return (<Employee {...store} />);
-
-  /*const storeConfig = {
-    employee: {
-      endpoint: {
-        url: "https://api.peoplehr.net/Employee",
-        method: "POST",
-        body: { Action: "GetAllEmployeeDetail" }
-      },
-      pathInResponse: ["Result"],
-      /!*find: {
-        type: "array", // array|object
-        key: "email",
-        value: [
-          ["$context", "data", "user", "primaryEmail"],
-          ["$context", "data", "user", "emails"],
-        ],
-      },*!/
-      find: {
-        key: "user.email",
-        value: {
-          type: "array", // array|object
-          // source: SourceType.Context,
-          key: "email",
-          value: [
-            ["data", "user", "primaryEmail"],
-            ["data", "user", "emails"],
-          ],
-          result: {
-            true: "/employee",
-            false: "/no_found",
-          }
-        },
-      }
-
-      //     expression: {
-      //       if: {
-      //         properties: {
-      //           "$ref": [
-      //             ["context", "data", "user", "primaryEmail"],
-      //             ["context", "data", "user", "emails"],
-      //           ],
-      //         },
-      //       }
-      //     }
-    },
-  };*/
-  return (
-    <PageBuilder
-      store={store}
-      blocksMap={{
-        fullName: EmployeeFullName,
-        text: Text,
-        salary: Salary,
-      }}
-      config={{
-        blocks: {
-          name: {
-            type: "fullName",
-            pathInStore: ["employee"],
-          },
-          email: {
-            type: "text",
-            label: "Email address",
-            pathInStore: ["employee", "email"],
-          },
-          department: {
-            type: "text",
-            label: "Department",
-            pathInStore: ["employee", "department"],
-          },
-          role: {
-            type: "text",
-            label: "Role",
-            pathInStore: ["employee", "role"],
-          },
-          reportsTo: {
-            type: "text",
-            label: "Reports to",
-            pathInStore: ["employee", "reportsTo"],
-          },
-          gender: {
-            type: "text",
-            label: "Gender",
-            pathInStore: ["employee", "gender"],
-          },
-          salary: {
-            type: "salary",
-            label: "Salary",
-            pathInStore: ["salary"],
-          },
-        },
-        structure: [
-          ["name"],
-          ["email"],
-          ["department"],
-          ["role"],
-          ["reportsTo"],
-          ["gender"],
-          ["salary"],
-        ],
-      }}
-    />
-  );
+  return (<Employee {...store} />);
 };
 
 export { EmployeePage };
