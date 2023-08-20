@@ -1,9 +1,6 @@
 import type { To, ParamKeyValuePair } from "react-router-dom";
-import type {
-  Context,
-  IDeskproClient,
-  DropdownValueType,
-} from "@deskpro/app-sdk";
+import type { DropdownValueType } from "@deskpro/deskpro-ui";
+import type { Context, IDeskproClient } from "@deskpro/app-sdk";
 import type { Employee } from "./services/peoplehr/types";
 
 /** Common types */
@@ -23,14 +20,12 @@ export type DateType = string;
 export type ApiRequestMethod = "GET";
 
 export type RequestParams = {
-  url?: string,
-  rawUrl?: string,
+  url: string,
   method?: ApiRequestMethod,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data?: any,
   headers?: Dict<string>,
   queryParams?: string|Dict<string>|ParamKeyValuePair[],
-  settings?: Maybe<Settings>,
 };
 
 export type Request = <T>(

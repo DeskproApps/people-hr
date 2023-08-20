@@ -1,4 +1,5 @@
 export { PeopleHRError } from "./PeopleHRError";
+export { getEmployeeService } from "./getEmployeeService";
 export { getEmployeesService } from "./getEmployeesService";
 export { getEmployeeSalaryService } from "./getEmployeeSalaryService";
 export { getEmployeeHolidayService } from "./getEmployeeHolidayService";

@@ -11,6 +11,7 @@ const queryClient = new QueryClient({
 });
 
 enum QueryKey {
+  EMPLOYEE = "employee",
   EMPLOYEES = "employees",
   EMPLOYEE_SALARY = "employeeSalary",
   EMPLOYEE_HOLIDAY = "employeeHoliday",

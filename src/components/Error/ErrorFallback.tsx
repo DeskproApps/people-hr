@@ -1,4 +1,4 @@
-import { Stack } from "@deskpro/app-sdk";
+import { Stack } from "@deskpro/deskpro-ui";
 import { PeopleHRError } from "../../services/peoplehr";
 import { ErrorBlock } from "./ErrorBlock";
 import { Container } from "../common";

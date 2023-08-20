@@ -1,4 +1,4 @@
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDebouncedCallback } from "use-debounce";
 import { match } from "ts-pattern";
 import {
@@ -8,14 +8,12 @@ import {
   useDeskproAppEvents,
 } from "@deskpro/app-sdk";
 import { isNavigatePayload } from "./utils";
-import {
-  HomePage,
-  LoadingAppPage,
-} from "./pages";
+import { AppBuilder } from "./components/AppBuilder";
 import type { FC } from "react";
 import type { EventPayload } from "./types";
 
 const App: FC = () => {
+
   const navigate = useNavigate();
   const { client } = useDeskproAppClient();
 
@@ -42,20 +40,14 @@ const App: FC = () => {
     onElementEvent: debounceElementEvent,
   }, [client]);
 
-  if (!client) {
-    return (
-      <LoadingSpinner/>
-    );
-  }
+  // if (!client) {
+  //   return (
+  //     <LoadingSpinner/>
+  //   );
+  // }
 
   return (
-    <>
-      <Routes>
-        <Route path="/home" element={<HomePage/>} />
-        <Route index element={<LoadingAppPage/>} />
-      </Routes>
-      <br/><br/><br/>
-    </>
+    <AppBuilder/>
   );
 }
 

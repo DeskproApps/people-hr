@@ -2,15 +2,16 @@ import { useCallback } from "react";
 import parse from "date-fns/parse";
 import format from "date-fns/format";
 import addMonths from "date-fns/addMonths";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useParams } from "react-router-dom";
 import { LoadingSpinner } from "@deskpro/app-sdk";
 import { useSetTitle } from "../../hooks";
 import { useEmployee } from "./hooks";
 import { API_FORMAT } from "../../constants";
-import { Home } from "../../components";
+import { Employee } from "../../components";
 import type { FC } from "react";
 
-const HomePage: FC = () => {
+const EmployeePage: FC = () => {
+  const { employeeId } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
   const holidaysPeriodMax = searchParams.get("holidaysPeriodMax") || format(addMonths(new Date(), 6), API_FORMAT);
   const {
@@ -23,7 +24,7 @@ const HomePage: FC = () => {
     isLoading,
     trainings,
     qualifications,
-  } = useEmployee({ holidaysPeriodMax });
+  } = useEmployee({ employeeId, holidaysPeriodMax });
 
   const onLoadNextHolidays = useCallback(() => {
     const currentPeriodMax = parse(holidaysPeriodMax, API_FORMAT, new Date());
@@ -31,6 +32,18 @@ const HomePage: FC = () => {
       ["holidaysPeriodMax", format(addMonths(currentPeriodMax, 6), API_FORMAT)],
     ]);
   }, [holidaysPeriodMax, setSearchParams]);
+
+  const store = {
+    employee: employee,
+    salary: salary,
+    holidays: holidays,
+    benefits: benefits,
+    documents: documents,
+    lateness: lateness,
+    qualifications: qualifications,
+    trainings: trainings,
+    onLoadNextHolidays: onLoadNextHolidays,
+  };
 
   useSetTitle("Contact");
 
@@ -40,19 +53,7 @@ const HomePage: FC = () => {
     );
   }
 
-  return (
-    <Home
-      employee={employee}
-      salary={salary}
-      holidays={holidays}
-      benefits={benefits}
-      documents={documents}
-      lateness={lateness}
-      qualifications={qualifications}
-      trainings={trainings}
-      onLoadNextHolidays={onLoadNextHolidays}
-    />
-  );
+  return (<Employee {...store} />);
 };
 
-export { HomePage };
+export { EmployeePage };
