@@ -1,7 +1,9 @@
+import { useMemo } from "react";
 import { useRoutes } from "react-router-dom";
-import { Title } from "@deskpro/app-sdk";
+import { Title, LoadingSpinner } from "@deskpro/app-sdk";
+import { config } from "./config";
 import { PageBuilder } from "../PageBuilder";
-import { LoadingAppPage } from "../../pages";
+// import { LoadingAppPage } from "../../pages";
 import { EmployeeFullName, Salary, Text } from "../blocks";
 import type { FC } from "react";
 import type { Dict } from "../../types";
@@ -16,31 +18,54 @@ const blocksMap = {
   text: Text,
   salary: Salary,
   title: Title,
+  loadingSpinner: LoadingSpinner
 };
 
 const AppBuilder: FC<Props> = () => {
-  return useRoutes([
+  const routes = useMemo(() => config.map(({ page, ...routerParam }) => {
+    return {
+      ...routerParam,
+      element: <PageBuilder blocksMap={blocksMap} config={page} />
+    };
+  }), [config]);
+
+  return useRoutes(routes);
+/*  return useRoutes([
     {
       path: "/",
       index: true,
-      element: <LoadingAppPage />,
+      element: (
+        <PageBuilder
+          blocksMap={blocksMap}
+          config={{
+            blocks: {
+              loading: {
+                type: "loadingSpinner",
+              }
+            },
+            structure: [
+              ["loading"],
+            ],
+          }}
+        />
+      ),
     },
     {
       path: "/employee/:employeeId",
       element: (
         <PageBuilder
-          store={{
-            employee: {
-              source: "#api",
-              url: "#mock/mockEmployee"
-            },
-            salary: {
-              source: "#api",
-              url: "#mock/mockEmployeeSalary"
-            },
-          } as Dict<SourceConfig>}
           blocksMap={blocksMap}
           config={{
+            store: {
+              employee: {
+                source: "#api",
+                url: "#mock/mockEmployee"
+              },
+              salary: {
+                source: "#api",
+                url: "#mock/mockEmployeeSalary"
+              },
+            } as Dict<SourceConfig>,
             blocks: {
               name: {
                 type: "fullName",
@@ -114,7 +139,7 @@ const AppBuilder: FC<Props> = () => {
         />
       ),
     },
-  ]);
+  ]);*/
 };
 
 export { AppBuilder };

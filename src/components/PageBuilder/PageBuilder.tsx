@@ -7,9 +7,8 @@ import type { FC } from "react";
 import type { Props } from "./types";
 
 const PageBuilder: FC<Props> = ({
-  store,
   blocksMap,
-  config: { structure, blocks },
+  config: { structure, blocks, store },
 }) => {
   const routerParams = useParams();
   const pageStore = useStore(routerParams, store);

@@ -25,10 +25,10 @@ export type BlockSet = {
 
 export type Props = {
   config: {
+    store?: Dict<SourceConfig>,
     structure: Array<string[]>,
     blocks: Record<string, BlockSet>,
   };
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   blocksMap: Record<string, FC<any>>,
-  store?: Dict<SourceConfig>,
 };

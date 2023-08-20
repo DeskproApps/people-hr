@@ -1,10 +1,12 @@
 import get from "lodash/get";
 import reduce from "lodash/reduce";
-import { useQueryWithClient } from "@deskpro/app-sdk";
+// import { useQueryWithClient } from "@deskpro/app-sdk";
 import { baseRequest } from "../../services/peoplehr/mockBaseRequest";
 import { SourceType } from "./types";
 import type { Dict } from "../../types";
 import type { SourceConfig, SourceAPI } from "./types";
+
+import { useQuery as useQueryWithClient } from "@tanstack/react-query";
 
 type UseStore = (params: Dict<string|undefined>, config?: Dict<SourceConfig>) => Dict<unknown>;
 

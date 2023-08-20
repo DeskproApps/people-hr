@@ -40,11 +40,11 @@ const App: FC = () => {
     onElementEvent: debounceElementEvent,
   }, [client]);
 
-  if (!client) {
-    return (
-      <LoadingSpinner/>
-    );
-  }
+  // if (!client) {
+  //   return (
+  //     <LoadingSpinner/>
+  //   );
+  // }
 
   return (
     <AppBuilder/>
