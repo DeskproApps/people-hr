@@ -2,16 +2,18 @@ import get from "lodash/get";
 import isEmpty from "lodash/isEmpty";
 import { useParams } from "react-router-dom";
 import { useStore } from "./useStore";
+import { useFind } from "./useFind";
 import { GenerateBlock } from "./GenerateBlock";
 import type { FC } from "react";
 import type { Props } from "./types";
 
 const PageBuilder: FC<Props> = ({
   blocksMap,
-  config: { structure, blocks, store },
+  config: { structure, blocks, store, find },
 }) => {
   const routerParams = useParams();
   const pageStore = useStore(routerParams, store);
+  useFind(find, pageStore);
 
   if (!Array.isArray(structure) ||isEmpty(structure)) {
     // eslint-disable-next-line no-console

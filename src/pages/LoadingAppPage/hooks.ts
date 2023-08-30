@@ -12,7 +12,7 @@ import {
 } from "@deskpro/app-sdk";
 import { QueryKey } from "../../query";
 import { getEmployeesService } from "../../services/peoplehr";
-import type { TicketContext } from "../../types";
+import type { UserContext } from "../../types";
 //..
 import { useQuery as useQueryWithClient } from "@tanstack/react-query";
 import { useDeskproLatestAppContext as mockUseDeskproLatestAppContext } from "../../../testing/hooks";
@@ -21,7 +21,7 @@ type UseCheckIsAuth = () => void;
 
 const useCheckIsAuth: UseCheckIsAuth = () => {
   const navigate = useNavigate();
-  // const { context } = useDeskproLatestAppContext() as { context: TicketContext };
+  // const { context } = useDeskproLatestAppContext() as { context: UserContext };
   const { context } = mockUseDeskproLatestAppContext();
 
   const employeeEmails = uniq(filter(concat(

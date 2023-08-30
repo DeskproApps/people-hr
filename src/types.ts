@@ -43,7 +43,7 @@ export type Settings = {
   access_tokens?: string,
 };
 
-export type TicketData = {
+export type UserData = {
   type: "user",
   user: {
     id: string,
@@ -61,7 +61,7 @@ export type TicketData = {
   },
 };
 
-export type TicketContext = Context<TicketData, Maybe<Settings>>;
+export type UserContext = Context<UserData, Maybe<Settings>>;
 
 export type NavigateToChangePage = { type: "changePage", path: To };
 

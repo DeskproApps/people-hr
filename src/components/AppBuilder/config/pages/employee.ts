@@ -1,14 +1,14 @@
 const employee = {
-  path: "/employee/:employeeId",
+  path: "/employee/:id",
   page: {
     store: {
       employee: {
-        source: "#api",
-        url: "#mock/mockEmployee"
+        source: "$api",
+        url: "$mock/mockEmployee"
       },
       salary: {
         source: "#api",
-        url: "#mock/mockEmployeeSalary"
+        url: "$mock/mockEmployeeSalary"
       },
     },
     blocks: {

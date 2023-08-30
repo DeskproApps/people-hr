@@ -26,7 +26,7 @@ const baseRequest: Request = async (client, { url }) => {
     mockEmployees,
     mockEmployeeSalary,
     mockEmployeeTrainings,
-  }, [replace(url, "#mock/", "")]));
+  }, [replace(url, "$mock/", "")]));
 };
 
 export { baseRequest };

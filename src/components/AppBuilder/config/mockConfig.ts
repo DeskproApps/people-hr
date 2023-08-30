@@ -25,8 +25,9 @@ const mockConfig = {
           ["data", "user", "emails"],
         ],
         result: {
-          true: "/employee",
-          false: "/no_found",
+          if: "",
+          then: "/employee/:id",
+          else: "/no_found",
         }
       },
     }
