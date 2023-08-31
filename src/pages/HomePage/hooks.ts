@@ -26,8 +26,8 @@ import { QueryKey } from "../../query";
 import type {
   Maybe,
   DateType,
+  UserContext,
   EmployeeType,
-  TicketContext,
 } from "../../types";
 import type {
   Late,
@@ -57,7 +57,7 @@ type UseEmployee = (options: EmployeesOptions) => {
 };
 
 const useEmployee: UseEmployee = ({ holidaysPeriodMax }) => {
-  const { context } = useDeskproLatestAppContext() as { context: TicketContext };
+  const { context } = useDeskproLatestAppContext() as { context: UserContext };
   const employeeEmails = uniq(filter(concat(
     get(context, ["data", "user", "primaryEmail"]),
     get(context, ["data", "user", "emails"]),

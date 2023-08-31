@@ -1,19 +1,22 @@
+import has from "lodash/has";
+import get from "lodash/get";
 import isEmpty from "lodash/isEmpty";
-import { proxyFetch } from "@deskpro/app-sdk";
+import { proxyFetch, adminGenericProxyFetch } from "@deskpro/app-sdk";
 import { BASE_URL, placeholders } from "../../constants";
-import { getQueryParams } from "../../utils";
+import { getQueryParams, isAPIError } from "../../utils";
 import { PeopleHRError } from "./PeopleHRError";
 import type { Request } from "../../types";
 
 const baseRequest: Request = async (client, {
   url,
   rawUrl,
+  headers,
   data = {},
+  settings = {},
   method = "POST",
   queryParams = {},
-  headers,
 }) => {
-  const dpFetch = await proxyFetch(client);
+  const dpFetch = await (has(settings, ["api_key"]) ? adminGenericProxyFetch : proxyFetch)(client);
 
   const baseUrl = rawUrl ? rawUrl : `${BASE_URL}${url}`;
   const params = getQueryParams(queryParams);
@@ -25,7 +28,7 @@ const baseRequest: Request = async (client, {
     options.body = data;
   } else if (!isEmpty(data)) {
     options.body = JSON.stringify({
-      APIKey: placeholders.API_KEY,
+      APIKey: get(settings, ["api_key"], placeholders.API_KEY),
       ...data,
     });
     options.headers = {
@@ -36,6 +39,20 @@ const baseRequest: Request = async (client, {
 
   const res = await dpFetch(requestUrl, options);
 
+  let response = {
+    isError: true,
+    Status: 0,
+    Message: "",
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    Result: {} as any,
+  };
+
+  try {
+    response = await res.json();
+  } catch (e) {
+    return response;
+  }
+
   if (res.status < 200 || res.status > 399) {
     throw new PeopleHRError({
       status: res.status,
@@ -43,11 +60,14 @@ const baseRequest: Request = async (client, {
     });
   }
 
-  try {
-    return await res.json();
-  } catch (e) {
-    return {};
+  if (res.status === 200 && isAPIError(response)) {
+    throw new PeopleHRError({
+      status: res.status,
+      data: response,
+    });
   }
+
+  return response;
 };
 
 export { baseRequest };

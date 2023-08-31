@@ -1,0 +1,10 @@
+{
+  "isError": false,
+  "Status": 0,
+  "Message": "The request processed successfully.",
+  "Result": {
+    "CompanyId": 66446,
+    "SubDomain": "testdeskpro",
+    "CompanyName": "Deskpro"
+  }
+}

@@ -4,7 +4,7 @@ import type {
   IDeskproClient,
   DropdownValueType,
 } from "@deskpro/app-sdk";
-import type { Employee } from "./services/peoplehr/types";
+import type { Employee, Response } from "./services/peoplehr/types";
 
 /** Common types */
 export type Maybe<T> = T | undefined | null;
@@ -20,7 +20,7 @@ export type DateTime = string;
 export type DateType = string;
 
 /** Request types */
-export type ApiRequestMethod = "GET";
+export type ApiRequestMethod = "GET"|"POST";
 
 export type RequestParams = {
   url?: string,
@@ -36,19 +36,14 @@ export type RequestParams = {
 export type Request = <T>(
   client: IDeskproClient,
   params: RequestParams,
-) => Promise<{
-  isError: boolean,
-  Status: number
-  Message: string,
-  Result: T,
-}>;
+) => Promise<Response<T>>;
 
 /** Deskpro types */
 export type Settings = {
-  access_tokens?: string,
+  api_key?: string,
 };
 
-export type TicketData = {
+export type UserData = {
   type: "user",
   user: {
     id: string,
@@ -66,7 +61,7 @@ export type TicketData = {
   },
 };
 
-export type TicketContext = Context<TicketData, Maybe<Settings>>;
+export type UserContext = Context<UserData, Maybe<Settings>>;
 
 export type NavigateToChangePage = { type: "changePage", path: To };
 

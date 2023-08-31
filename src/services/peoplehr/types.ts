@@ -1,10 +1,18 @@
 import type { DateType } from "../../types";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type Response<T = any> = {
+  isError: boolean,
+  Status: number
+  Message: string,
+  Result: T,
+};
+
 export type PeopleHRAPIError = {
-  error: {
-    code: number,
-    message: string,
-  }
+  Message: string,
+  Result: object,
+  Status: number,
+  isError: true
 };
 
 export type Employee = {
@@ -337,4 +345,10 @@ export type Training = {
   CustomColumn: [],
   Audio: [],
   Video: []
+};
+
+export type Company = {
+  CompanyId: number,
+  SubDomain: string,
+  CompanyName: string,
 };
