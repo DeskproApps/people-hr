@@ -1,9 +1,9 @@
 import { useCallback } from "react";
 import size from "lodash/size";
 import { TSpan } from "@deskpro/deskpro-ui";
-import { Title, HorizontalDivider } from "@deskpro/app-sdk";
+import { Title, HorizontalDivider, TwoProperties } from "@deskpro/app-sdk";
 import { format } from "../../../utils/date";
-import { Container, TwoProperties, Status, Link } from "../../common";
+import { Container, Status, Link } from "../../common";
 import type { FC, MouseEvent } from "react";
 import type { Maybe } from "../../../types";
 import type { Holiday } from "../../../services/peoplehr/types";

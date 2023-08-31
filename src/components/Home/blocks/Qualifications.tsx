@@ -1,7 +1,12 @@
 import size from "lodash/size";
 import { TSpan } from "@deskpro/deskpro-ui";
-import { Title, HorizontalDivider } from "@deskpro/app-sdk";
-import { Container, Property, TwoProperties } from "../../common";
+import {
+  Title,
+  Property,
+  TwoProperties,
+  HorizontalDivider,
+} from "@deskpro/app-sdk";
+import { Container } from "../../common";
 import { format } from "../../../utils/date";
 import type { FC } from "react";
 import type { Maybe } from "../../../types";

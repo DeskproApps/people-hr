@@ -1,7 +1,7 @@
 import size from "lodash/size";
 import { TSpan } from "@deskpro/deskpro-ui";
-import { Title, HorizontalDivider } from "@deskpro/app-sdk";
-import { Link, Container, TwoProperties } from "../../common";
+import { Title, HorizontalDivider, TwoProperties } from "@deskpro/app-sdk";
+import { Link, Container } from "../../common";
 import type { FC } from "react";
 import type { Maybe } from "../../../types";
 import type { Document } from "../../../services/peoplehr/types";

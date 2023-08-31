@@ -1,6 +1,6 @@
 import get from "lodash/get";
-import { Title } from "@deskpro/app-sdk";
-import { Container, Property } from "../../common";
+import { Title, Property } from "@deskpro/app-sdk";
+import { Container } from "../../common";
 import { getFullName, getSalary } from "../../../utils";
 import type { FC } from "react";
 import type { EmployeeType, Maybe } from "../../../types";

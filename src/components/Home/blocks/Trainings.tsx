@@ -4,10 +4,11 @@ import { match } from "ts-pattern";
 import { TSpan, Pill } from "@deskpro/deskpro-ui";
 import {
   Title,
+  TwoProperties,
   HorizontalDivider,
   useDeskproAppTheme,
 } from "@deskpro/app-sdk";
-import { Container, TwoProperties } from "../../common";
+import { Container } from "../../common";
 import type { FC } from "react";
 import type { Maybe } from "../../../types";
 import type { Training, Salary } from "../../../services/peoplehr/types";
