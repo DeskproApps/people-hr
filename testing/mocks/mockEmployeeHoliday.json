@@ -26,7 +26,7 @@
     {
       "AnnualLeaveTxnId": 139512146,
       "StartDate": "2023-05-26",
-      "EndDate": "2023-05-26",
+      "EndDate": "2023-05-27",
       "DurationType": 1,
       "DurationInDays": 1.00,
       "DurationInMinutes": 450,
@@ -35,7 +35,7 @@
       "PartOfDay": "",
       "StartDatePartOfTheDay": "",
       "EndDatePartOfTheDay": "",
-      "RequesterComments": "test",
+      "RequesterComments": "Summer Bank Holiday",
       "ApproverComments": "Auto approved",
       "Approver": "David Test",
       "Status": "Approved",

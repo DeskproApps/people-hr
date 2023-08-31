@@ -4,7 +4,7 @@
   "Message": "The request processed successfully.",
   "Result": {
     "EmployeeId": {
-      "DisplayValue": "PW1",
+      "DisplayValue": "PW2",
       "FieldHistory": []
     },
     "Title": {
@@ -12,11 +12,11 @@
       "FieldHistory": []
     },
     "FirstName": {
-      "DisplayValue": "David",
+      "DisplayValue": "Cormac",
       "FieldHistory": []
     },
     "LastName": {
-      "DisplayValue": "Test",
+      "DisplayValue": "McCarthy",
       "FieldHistory": []
     },
     "OtherName": {
@@ -28,65 +28,57 @@
       "FieldHistory": []
     },
     "EmailId": {
-      "DisplayValue": "davidtestacc0401@gmail.com",
+      "DisplayValue": "cormac.mccarthy@example.org",
       "FieldHistory": []
     },
     "StartDate": {
-      "DisplayValue": "2023-05-23",
+      "DisplayValue": "2023-07-02",
       "FieldHistory": []
     },
     "DateOfBirth": {
-      "DisplayValue": "",
+      "DisplayValue": "1991-06-05",
       "FieldHistory": []
     },
     "JobRole": {
-      "DisplayValue": "",
-      "FieldHistoryForJobRole": [
-        {
-          "JobRole": "",
-          "EffectiveDate": "2023-05-23",
-          "ChangedOn": "2023-05-23",
-          "TimeStamp": "2023-05-23 15:50:10",
-          "ReasonForChange": "New Starter"
-        }
-      ]
+      "DisplayValue": "Frontend Developer",
+      "FieldHistoryForJobRole": []
     },
     "Company": {
-      "DisplayValue": "",
+      "DisplayValue": "Deskpro",
       "FieldHistoryForEffectiveDate": []
     },
     "CompanyEffectiveDate": {
       "DisplayValue": ""
     },
     "Location": {
-      "DisplayValue": "",
+      "DisplayValue": "Head Office",
       "FieldHistoryForEffectiveDate": []
     },
     "LocationEffectiveDate": {
       "DisplayValue": ""
     },
     "Department": {
-      "DisplayValue": "",
+      "DisplayValue": "Development",
       "FieldHistoryForEffectiveDate": []
     },
     "DepartmentEffectiveDate": {
       "DisplayValue": ""
     },
     "JobRoleChangeDate": {
-      "DisplayValue": "2023-05-23"
+      "DisplayValue": "2023-07-02"
     },
     "ReportsTo": {
-      "DisplayValue": "",
+      "DisplayValue": "Armen Tamzarian",
       "FieldHistoryForEffectiveDate": []
     },
     "ReportsToEffectiveDate": {
       "DisplayValue": ""
     },
     "ReportsToEmployeeId": {
-      "DisplayValue": ""
+      "DisplayValue": "PW1"
     },
     "ReportsToEmailAddress": {
-      "DisplayValue": ""
+      "DisplayValue": "ilia.makarov@me.com"
     },
     "NISNumber": {
       "DisplayValue": "",
@@ -117,11 +109,11 @@
       "FieldHistory": []
     },
     "ProbationEndDate": {
-      "DisplayValue": "2023-08-23",
+      "DisplayValue": "2023-10-02",
       "FieldHistory": []
     },
     "Gender": {
-      "DisplayValue": "Not Specified",
+      "DisplayValue": "Male",
       "FieldHistory": []
     },
     "AnalysisCode1LabelText": {
@@ -134,7 +126,7 @@
     },
     "ContactDetail": {
       "Address": {
-        "DisplayValue": "",
+        "DisplayValue": "<br /><br /><br /><br />UK<br />",
         "FieldHistory": []
       },
       "WorkPhoneNumber": {
@@ -238,7 +230,7 @@
     "APIColumn4": "",
     "APIColumn5": "",
     "AdditionalreportsTo": [],
-    "UniqueKey": "28099ca7-a4ea-4a81-a3fc-cd79313977a1",
+    "UniqueKey": "24454418-4f5c-458d-91d8-394f9fc45eed",
     "lstFieldHistoryJobrole": null
   }
 }

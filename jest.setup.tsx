@@ -5,8 +5,11 @@ import "intersection-observer";
 // @ts-ignore
 import { TextDecoder, TextEncoder } from "util";
 import React from "react";
+import { useQuery } from "@tanstack/react-query";
 import { lightTheme } from "@deskpro/deskpro-ui";
 import { mockClient } from "./testing";
+import type { IDeskproClient } from "@deskpro/app-sdk";
+import {useDeskproLatestAppContext} from "@deskpro/app-sdk";
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 //@ts-ignore
@@ -19,6 +22,30 @@ global.TextDecoder = TextDecoder;
 //@ts-ignore
 global.React = React;
 
+const context = {
+  type: "user",
+  settings: {"verify_settings": null},
+  data: {
+    user: {
+      id: "1010",
+      name: "Bo Bartell",
+      firstName: "Bo",
+      lastName: "Bartell",
+      titlePrefix: "Dr.",
+      isDisabled: false,
+      isAgent: false,
+      isConfirmed: true,
+      emails: ["cormac.mccarthy@example.org"],
+      primaryEmail: "cormac.mccarthy@example.org",
+      language: "English",
+      locale: "en-US"
+    },
+    app: {},
+    env: {},
+    currentAgent: {}
+  }
+};
+
 jest.mock("@deskpro/app-sdk", () => ({
   ...jest.requireActual("@deskpro/app-sdk"),
   useDeskproAppClient: () => ({ client: mockClient }),
@@ -26,21 +53,11 @@ jest.mock("@deskpro/app-sdk", () => ({
     hooks: { [key: string]: (param: Record<string, unknown>) => void },
     deps: [] = []
   ) => {
-    const deskproAppEventsObj = {
-      type: "ticket",
-      settings: {},
-      data: {
-        ticket: { id: "215", subject: "Big ticket" },
-        app: {},
-        env: {},
-        currentAgent: {},
-      },
-    };
     React.useEffect(() => {
-      !!hooks.onChange && hooks.onChange(deskproAppEventsObj);
-      !!hooks.onShow && hooks.onShow(deskproAppEventsObj);
-      !!hooks.onReady && hooks.onReady(deskproAppEventsObj);
-      !!hooks.onAdminSettingsChange && hooks.onAdminSettingsChange(deskproAppEventsObj.settings);
+      !!hooks.onChange && hooks.onChange(context);
+      !!hooks.onShow && hooks.onShow(context);
+      !!hooks.onReady && hooks.onReady(context);
+      !!hooks.onAdminSettingsChange && hooks.onAdminSettingsChange(context.settings);
       /* eslint-disable-next-line react-hooks/exhaustive-deps */
     }, deps);
   },
@@ -56,4 +73,10 @@ jest.mock("@deskpro/app-sdk", () => ({
   useDeskproAppTheme: () => ({ theme: lightTheme }),
   proxyFetch: async () => fetch,
   LoadingSpinner: () => <>Loading...</>,
+  useQueryWithClient: (
+    queryKey: string[],
+    queryFn: (client: IDeskproClient) => Promise<void>,
+    options: object,
+  ) => useQuery(queryKey, () => queryFn(mockClient as never), options),
+  useDeskproLatestAppContext: () => ({ context }),
 }));

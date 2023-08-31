@@ -24,6 +24,7 @@ const TrainingItem: FC<Training & { currency?: Salary["Currency"] }> = ({
   Status,
   currency,
   Importance,
+  Description,
   TrainingType,
   TrainingDate,
   TrainingExpiryDate,
@@ -35,7 +36,7 @@ const TrainingItem: FC<Training & { currency?: Salary["Currency"] }> = ({
 
   return (
     <div style={{ marginBottom: 14 }}>
-      <TSpan type="h3">Computer Science</TSpan>
+      <TSpan type="h3">{Description}</TSpan>
       <TwoProperties
         leftLabel="Training"
         leftText={TrainingType}
