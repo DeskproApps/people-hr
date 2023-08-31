@@ -1,7 +1,7 @@
 import type { To, ParamKeyValuePair } from "react-router-dom";
 import type { DropdownValueType } from "@deskpro/deskpro-ui";
 import type { Context, IDeskproClient } from "@deskpro/app-sdk";
-import type { Employee, Response } from "./services/peoplehr/types";
+import type { Response } from "./services/peoplehr/types";
 
 /** Common types */
 export type Maybe<T> = T | undefined | null;
@@ -67,13 +67,3 @@ export type EventPayload =
 ;
 
 /** Entities */
-export type EmployeeType = {
-  id: Employee["EmployeeId"]["DisplayValue"],
-  firstName: Employee["FirstName"]["DisplayValue"],
-  lastName: Employee["LastName"]["DisplayValue"],
-  email: Employee["EmailId"]["DisplayValue"],
-  department: Employee["Department"]["DisplayValue"],
-  role: Employee["JobRole"]["DisplayValue"],
-  reportsTo: Employee["ReportsTo"]["DisplayValue"],
-  gender: Employee["Gender"]["DisplayValue"],
-}

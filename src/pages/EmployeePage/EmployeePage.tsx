@@ -2,15 +2,16 @@ import { useCallback } from "react";
 import parse from "date-fns/parse";
 import format from "date-fns/format";
 import addMonths from "date-fns/addMonths";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useParams } from "react-router-dom";
 import { LoadingSpinner } from "@deskpro/app-sdk";
 import { useSetTitle } from "../../hooks";
 import { useEmployee } from "./hooks";
 import { API_FORMAT } from "../../constants";
-import { Home } from "../../components";
+import { Employee } from "../../components";
 import type { FC } from "react";
 
-const HomePage: FC = () => {
+const EmployeePage: FC = () => {
+  const { id } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
   const holidaysPeriodMax = searchParams.get("holidaysPeriodMax") || format(addMonths(new Date(), 6), API_FORMAT);
   const {
@@ -23,7 +24,7 @@ const HomePage: FC = () => {
     isLoading,
     trainings,
     qualifications,
-  } = useEmployee({ holidaysPeriodMax });
+  } = useEmployee({ employeeId: id, holidaysPeriodMax });
 
   const onLoadNextHolidays = useCallback(() => {
     const currentPeriodMax = parse(holidaysPeriodMax, API_FORMAT, new Date());
@@ -41,7 +42,7 @@ const HomePage: FC = () => {
   }
 
   return (
-    <Home
+    <Employee
       employee={employee}
       salary={salary}
       holidays={holidays}
@@ -55,4 +56,4 @@ const HomePage: FC = () => {
   );
 };
 
-export { HomePage };
+export { EmployeePage };

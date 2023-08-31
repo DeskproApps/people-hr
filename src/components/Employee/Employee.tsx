@@ -8,9 +8,8 @@ import {
   EmployeeInfo,
   Qualifications,
 } from "./blocks";
-import { NoEmployeeFound } from "./NoEmployeeFound";
 import type { FC } from "react";
-import type { Maybe, EmployeeType } from "../../types";
+import type { Maybe } from "../../types";
 import type {
   Late,
   Salary,
@@ -19,6 +18,7 @@ import type {
   Document,
   Training,
   Qualification,
+  Employee as EmployeeType,
 } from "../../services/peoplehr/types";
 
 type Props = {
@@ -33,7 +33,7 @@ type Props = {
   onLoadNextHolidays: () => void,
 };
 
-const Home: FC<Props> = ({
+const Employee: FC<Props> = ({
   employee,
   salary,
   holidays,
@@ -44,10 +44,6 @@ const Home: FC<Props> = ({
   qualifications,
   onLoadNextHolidays,
 }) => {
-  if (!employee) {
-    return <NoEmployeeFound/>;
-  }
-
   return (
     <>
       <EmployeeInfo employee={employee} salary={salary} />
@@ -62,4 +58,4 @@ const Home: FC<Props> = ({
   );
 };
 
-export { Home };
+export { Employee };

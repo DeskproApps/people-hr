@@ -9,9 +9,10 @@ import {
 } from "@deskpro/app-sdk";
 import { isNavigatePayload } from "./utils";
 import {
-  HomePage,
+  EmployeePage,
   LoadingAppPage,
   VerifySettingsPage,
+  NoEmployeeFoundPage,
 } from "./pages";
 import type { FC } from "react";
 import type { EventPayload } from "./types";
@@ -53,7 +54,8 @@ const App: FC = () => {
     <>
       <Routes>
         <Route path="/admin/verify_settings" element={<VerifySettingsPage/>} />
-        <Route path="/home" element={<HomePage/>} />
+        <Route path="/employee/:id" element={<EmployeePage/>} />
+        <Route path="/no-found" element={<NoEmployeeFoundPage/>} />
         <Route index element={<LoadingAppPage/>} />
       </Routes>
       <br/><br/><br/>

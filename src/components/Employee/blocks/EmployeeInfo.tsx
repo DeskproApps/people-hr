@@ -3,11 +3,11 @@ import { Title, Property } from "@deskpro/app-sdk";
 import { Container } from "../../common";
 import { getFullName, getSalary } from "../../../utils";
 import type { FC } from "react";
-import type { EmployeeType, Maybe } from "../../../types";
-import type { Salary } from "../../../services/peoplehr/types";
+import type { Maybe } from "../../../types";
+import type { Employee, Salary } from "../../../services/peoplehr/types";
 
 type Props = {
-  employee: Maybe<EmployeeType>,
+  employee: Maybe<Employee>,
   salary: Maybe<Salary>,
 };
 
@@ -17,23 +17,23 @@ const EmployeeInfo: FC<Props> = ({ employee, salary }) => {
       <Title title={getFullName(employee)} />
       <Property
         label="Email address"
-        text={get(employee, ["email"], "-")}
+        text={get(employee, ["EmailId", "DisplayValue"], "-")}
       />
       <Property
         label="Department"
-        text={get(employee, ["department"], "-")}
+        text={get(employee, ["Department", "DisplayValue"], "-")}
       />
       <Property
         label="Role"
-        text={get(employee, ["role"], "-")}
+        text={get(employee, ["JobRole", "DisplayValue"], "-")}
       />
       <Property
         label="Reports to"
-        text={get(employee, ["reportsTo"], "-")}
+        text={get(employee, ["ReportsTo", "DisplayValue"], "-")}
       />
       <Property
         label="Gender"
-        text={get(employee, ["gender"], "-")}
+        text={get(employee, ["Gender", "DisplayValue"], "-")}
       />
       <Property
         label="Salary"
