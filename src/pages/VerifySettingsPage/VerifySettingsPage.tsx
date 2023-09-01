@@ -17,7 +17,7 @@ const VerifySettingsPage: FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
   const API_KEY = useMemo(() => get(settings, ["api_key"]), [settings]);
-  const errorMessage = useMemo(() => "Failed to connect to SimpleMDM, settings seem to be invalid", []);
+  const errorMessage = "Failed to connect to SimpleMDM, settings seem to be invalid";
 
   const onVerifySettings = useCallback(() => {
     if (!client || !API_KEY) {
