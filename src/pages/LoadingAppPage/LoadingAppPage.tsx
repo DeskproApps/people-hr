@@ -1,9 +1,9 @@
 import { LoadingSpinner } from "@deskpro/app-sdk";
-import { useCheckIsAuth } from "./hooks";
+import { useCheckIsExistEmployee } from "./hooks";
 import type { FC } from "react";
 
 const LoadingAppPage: FC = () => {
-  useCheckIsAuth();
+  useCheckIsExistEmployee();
 
   return (
     <LoadingSpinner/>

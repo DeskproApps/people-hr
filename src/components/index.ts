@@ -1,2 +1,4 @@
 export { ErrorBlock, ErrorFallback } from "./Error";
-export { Home } from "./Home";
+export { Employee } from "./Employee";
+export { VerifySettings } from "./VerifySettings";
+export { NoEmployeeFound } from "./NoEmployeeFound";

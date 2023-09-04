@@ -6,11 +6,14 @@ const queryClient = new QueryClient({
       suspense: false,
       useErrorBoundary: true,
       refetchOnWindowFocus: false,
+      retry: 1,
+      retryDelay: 1500,
     },
   },
 });
 
 enum QueryKey {
+  EMPLOYEE = "employee",
   EMPLOYEES = "employees",
   EMPLOYEE_SALARY = "employeeSalary",
   EMPLOYEE_HOLIDAY = "employeeHoliday",

@@ -7,3 +7,5 @@ export { getEmployeeDocumentsService } from "./getEmployeeDocumentsService";
 export { getEmployeeLateService } from "./getEmployeeLateService";
 export { getEmployeeQualificationsService } from "./getEmployeeQualificationsService";
 export { getEmployeeTrainingsService } from "./getEmployeeTrainingsService";
+export { getCompanyInfoService } from "./getCompanyInfoService";
+export { getEmployeeService } from "./getEmployeeService";
