@@ -1,17 +1,21 @@
+import { useState, useEffect } from "react";
 import get from "lodash/get";
-import reduce from "lodash/reduce";
+import map from "lodash/map";
+import isEmpty from "lodash/isEmpty";
 import {
-  // useQueryWithClient,
+  useDeskproAppClient,
   useDeskproLatestAppContext,
 } from "@deskpro/app-sdk";
 import { baseRequest } from "../../services/peoplehr/mockBaseRequest";
 import { SOURCE_TYPE } from "./constants";
+import type { IDeskproClient } from "@deskpro/app-sdk";
 import type { Dict, UserContext } from "../../types";
-import type {SourceConfig, SourceAPI, SourceContext} from "./types";
+import type { SourceConfig, SourceAPI, SourceContext } from "./types";
 
-import { useQuery as useQueryWithClient } from "@tanstack/react-query";
-
-type UseStore = (params: Dict<string|undefined>, config?: Dict<SourceConfig>) => Dict<unknown>;
+type UseStore = (config?: Dict<SourceConfig>) => {
+  isLoading: boolean,
+  data: Dict<unknown>,
+};
 
 const isApiConfig = (config: SourceConfig): config is SourceAPI  => {
   return get(config, ["source"]) === SOURCE_TYPE.API;
@@ -25,32 +29,37 @@ const isContextConfig = (config: SourceConfig): config is SourceContext  => {
  * @param routerParams - to replace param in request url|queryParams|body|etc...
  * @param config
  */
-const useStore: UseStore = (routerParams, config) => {
+const useStore: UseStore = (config) => {
   const { context } = useDeskproLatestAppContext() as { context: UserContext };
+  const { client } = useDeskproAppClient();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [data, setData] = useState<Dict<unknown>>({});
 
-  if (!config) {
-    return {};
-  }
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const fetchedData = reduce<Dict<SourceConfig>, Dict<{ data: any }>>(config, (acc, params, key) => {
-    if (isApiConfig(params)) {
-      // eslint-disable-next-line react-hooks/rules-of-hooks
-      acc[key] = useQueryWithClient(
-        [params.url],
-        (client) => baseRequest(client,  params),
-      );
-    } else if (isContextConfig(params)) {
-      acc[key] = { data: get(context, get(params, ["path"])) };
+  useEffect(() => {
+    if (!client || isEmpty(config) || isEmpty(context)) {
+      return;
     }
-    return acc;
-  }, {});
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return reduce<Dict<{ data: any }>, Dict<any>>(fetchedData, (acc, { data }, key) => {
-    acc[key] = data;
-    return acc;
-  }, {});
+    (async () => {
+      setIsLoading(true);
+      setData({});
+      const results: Dict<unknown> = {};
+
+      await Promise.all(map(config, async (params, key) => {
+        if (isApiConfig(params)) {
+          results[key] = await baseRequest(client as IDeskproClient,  params);
+        } else if (isContextConfig(params)) {
+          results[key] = get(context, get(params, ["path"]));
+        }
+      }));
+      setIsLoading(false);
+      setData(results);
+    })();
+
+
+  }, [client, config, context]);
+
+  return { isLoading, data };
 };
 
 export { useStore };

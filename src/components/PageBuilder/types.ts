@@ -16,7 +16,7 @@ export type SourceContext = {
 export type SourceConfig = SourceAPI | SourceContext;
 
 export type Operand = {
-  type: "array"|"object",
+  type: "array"|"object"|"string",
   storeKey: string,
   storePath: string|string[],
 };

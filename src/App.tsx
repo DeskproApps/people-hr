@@ -13,7 +13,6 @@ import type { FC } from "react";
 import type { EventPayload } from "./types";
 
 const App: FC = () => {
-
   const navigate = useNavigate();
   const { client } = useDeskproAppClient();
 
@@ -40,11 +39,11 @@ const App: FC = () => {
     onElementEvent: debounceElementEvent,
   }, [client]);
 
-  // if (!client) {
-  //   return (
-  //     <LoadingSpinner/>
-  //   );
-  // }
+  if (!client) {
+    return (
+      <LoadingSpinner/>
+    );
+  }
 
   return (
     <AppBuilder/>

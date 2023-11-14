@@ -1,7 +1,6 @@
 import { baseRequest } from "./baseRequest";
 import type { IDeskproClient } from "@deskpro/app-sdk";
 import type { Employee, Holiday } from "./types";
-import { mockEmployeeHoliday } from "../../../testing";
 
 type Data = {
   employeeId: Employee["EmployeeId"]["DisplayValue"],
@@ -13,7 +12,6 @@ const getEmployeeHolidayService = (
   client: IDeskproClient,
   { employeeId, start, end }: Data,
 ) => {
-  return Promise.resolve(mockEmployeeHoliday);
   return baseRequest<Holiday[]>(client, {
     url: "/Holiday",
     data: {

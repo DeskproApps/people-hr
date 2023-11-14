@@ -1,14 +1,26 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import get from "lodash/get";
 import isEmpty from "lodash/isEmpty";
-import type { Dict } from "../../types";
+import includes from "lodash/includes";
+import type { Dict, Maybe } from "../../types";
 import type { FindConfig, Operand } from "./types";
 
-export const getStoreValueByCondition = (store: Dict<any>, cond: Operand) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const getStoreValueByCondition = (store: Dict<any>, cond: Operand): []|object|undefined => {
+  const storeValue = get(store, cond.storeKey);
 
+  if (cond.type === "array" && Array.isArray(storeValue)) {
+    return storeValue;
+  }
+
+  return (cond.storePath ? get(storeValue, cond.storePath) : storeValue) || undefined;
 };
 
-const useFind = (config?: FindConfig, store?: Dict<any>): void => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const useFind = (config?: FindConfig, store?: Maybe<Dict<any>>): void => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (!config || isEmpty(config) || isEmpty(store)) {
       return;
@@ -18,30 +30,23 @@ const useFind = (config?: FindConfig, store?: Dict<any>): void => {
     const thenTo = get(config, ["then"]);
     const elseTo = get(config, ["else"]);
 
-    const firstValue = (operandOne.type === "array")
-      ? get(store, Array.isArray(operandOne.storeKey) ? operandOne.storeKey : [operandOne.storeKey])
-      : get(store, [
-        ...(Array.isArray(operandOne.storeKey) ? operandOne.storeKey : [operandOne.storeKey]),
-        ...(operandOne.storePath || []),
-      ]);
-    const secondValue = (operandTwo.type === "array")
-      ? get(store, Array.isArray(operandTwo.storeKey) ? operandTwo.storeKey : [operandTwo.storeKey])
-      : get(store, [
-        ...(Array.isArray(operandTwo.storeKey) ? operandTwo.storeKey : [operandTwo.storeKey]),
-        ...(operandOne.storePath || []),
-      ]);
-
-    console.log(">>> find:cond:", store);
+    const firstValue = getStoreValueByCondition(store, operandOne);
+    const secondValue = getStoreValueByCondition(store, operandTwo)
 
     if (isEmpty(firstValue) || isEmpty(secondValue)) {
       return;
     }
 
-    const condResult = (firstValue.type !== "array")
-      ? firstValue === secondValue
-      : firstValue.includes((value) => get(value, operandOne.storePath) === secondValue);
+    const condResult = (operandOne.type === "array")
+      ? (firstValue as []).some((value) => includes(get(value, operandOne.storePath), secondValue))
+      : includes(firstValue, secondValue);
 
-    console.log(">>> find:result:", condResult);
+    if (condResult) {
+      navigate(thenTo);
+    } else {
+      navigate(elseTo);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [config, store]);
 };
 

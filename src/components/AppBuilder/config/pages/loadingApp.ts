@@ -1,6 +1,5 @@
 const loadingApp = {
   path: "/",
-  index: true,
   page: {
     store: {
       employees: {
@@ -22,7 +21,7 @@ const loadingApp = {
         { type: "object", storeKey: "userPrimaryEmail" }
       ],
       then: "/employee/:id",
-      else: "/no_found",
+      else: "/not-found",
     },
     blocks: {
       loading: {
