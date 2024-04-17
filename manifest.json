@@ -2,7 +2,7 @@
   "name": "@deskpro-apps/people-hr",
   "title": "People HR",
   "description": "View your employees' People HR data alongside your interactions with them to streamline your HR management.",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "scope": "agent",
   "isSingleInstall": false,
   "hasDevMode": true,
