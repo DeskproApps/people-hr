@@ -3,9 +3,13 @@ People HR App Setup Instructions
 
 To install the People HR app you must first create an API key. Head over your People HR account to get started.
 
-Once you've logged in, click "Settings" at the bottom left of the screen and choose "API"
+Once you've logged in, choose __"HR Admin"__ in top left dropdown menu.
 
-[![](./docs/assets/setup/people-hr-setup-01.png)](/docs/assets/setup/people-hr-setup-01.png)
+[![](/docs/assets/setup/people-hr-setup-01.png)](/docs/assets/setup/people-hr-setup-01.png)
+
+Then click __"Settings"__ at the left sidebar of the screen and choose __"API"__
+
+[![](/docs/assets/setup/people-hr-setup-02.png)](/docs/assets/setup/people-hr-setup-02.png)
 
 Click "Generate a new API key" and choose the next permissions:
 
@@ -25,11 +29,11 @@ __Holiday:__
 __Document:__
 * Get all documents
 
-[![](./docs/assets/setup/people-hr-setup-02.png)](/docs/assets/setup/people-hr-setup-02.png)
+[![](/docs/assets/setup/people-hr-setup-03.png)](/docs/assets/setup/people-hr-setup-03.png)
 
 Click "Save" and copy your new API key to your clipboard. Keep this token private, safe and secure.
 
-[![](./docs/assets/setup/people-hr-setup-03.png)](/docs/assets/setup/people-hr-setup-03.png)
+[![](/docs/assets/setup/people-hr-setup-04.png)](/docs/assets/setup/people-hr-setup-04.png)
 
 When you install the People HR app in Deskpro, enter this API key into the settings tab of the app.
 
