@@ -46,20 +46,17 @@ const App: FC = () => {
 
   if (!client) {
     return (
-      <LoadingSpinner/>
+      <LoadingSpinner />
     );
   }
 
   return (
-    <>
-      <Routes>
-        <Route path="/admin/verify_settings" element={<VerifySettingsPage/>} />
-        <Route path="/employee/:id" element={<EmployeePage/>} />
-        <Route path="/no-found" element={<NoEmployeeFoundPage/>} />
-        <Route index element={<LoadingAppPage/>} />
-      </Routes>
-      <br/><br/><br/>
-    </>
+    <Routes>
+      <Route path="/admin/verify_settings" element={<VerifySettingsPage />} />
+      <Route path="/employee/:id" element={<EmployeePage />} />
+      <Route path="/no-found" element={<NoEmployeeFoundPage />} />
+      <Route index element={<LoadingAppPage />} />
+    </Routes>
   );
 }
 
