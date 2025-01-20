@@ -6,7 +6,7 @@ const getEmployeeSalaryService = (
   client: IDeskproClient,
   employeeId: Employee["EmployeeId"]["DisplayValue"],
 ) => {
-  return baseRequest<Salary>(client, {
+  return baseRequest<Salary[]>(client, {
     url: "/Salary",
     data: {
       Action: "GetSalaryDetail",
