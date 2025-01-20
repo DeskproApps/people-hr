@@ -47,7 +47,7 @@ const VerifySettings: FC<Props> = ({
             Verified {company && (<>as {company}</>)}
           </P1>
         )
-        : <Invalid type="p1">{error}</Invalid> || ""
+        : <Invalid type="p1">{error}</Invalid>
       }
     </Stack>
   );
