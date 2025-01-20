@@ -1,5 +1,5 @@
-import get from "lodash/get";
-import { Title, Property } from "@deskpro/app-sdk";
+
+import { Property } from "@deskpro/app-sdk";
 import { Container } from "../../common";
 import { getFullName, getSalary } from "../../../utils";
 import type { FC } from "react";
@@ -22,23 +22,23 @@ const EmployeeInfo: FC<Props> = ({ employee, salary }) => {
       </div>
       <Property
         label="Email address"
-        text={get(employee, ["EmailId", "DisplayValue"], "-")}
+        text={employee?.EmailId.DisplayValue?? "-"}
       />
       <Property
         label="Department"
-        text={get(employee, ["Department", "DisplayValue"], "-")}
+        text={employee?.Department.DisplayValue ?? "-" }
       />
       <Property
         label="Role"
-        text={get(employee, ["JobRole", "DisplayValue"], "-")}
+        text={employee?.JobRole.DisplayValue ?? "-" }
       />
       <Property
         label="Reports to"
-        text={get(employee, ["ReportsTo", "DisplayValue"], "-")}
+        text={employee?.ReportsTo.DisplayValue ?? "-" }
       />
       <Property
         label="Gender"
-        text={get(employee, ["Gender", "DisplayValue"], "-")}
+        text={employee?.Gender.DisplayValue ?? "-"}
       />
       <Property
         label="Salary"
