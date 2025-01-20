@@ -5,6 +5,7 @@ import { getFullName, getSalary } from "../../../utils";
 import type { FC } from "react";
 import type { Maybe } from "../../../types";
 import type { Employee, Salary } from "../../../services/peoplehr/types";
+import { H1 } from "@deskpro/deskpro-ui";
 
 type Props = {
   employee: Maybe<Employee>,
@@ -14,7 +15,11 @@ type Props = {
 const EmployeeInfo: FC<Props> = ({ employee, salary }) => {
   return (
     <Container>
-      <Title title={getFullName(employee)} />
+      <div style={{
+        marginBottom: "14px"
+      }}>
+        <H1>{getFullName(employee)}</H1>
+      </div>
       <Property
         label="Email address"
         text={get(employee, ["EmailId", "DisplayValue"], "-")}
