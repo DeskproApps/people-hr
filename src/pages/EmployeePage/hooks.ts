@@ -1,4 +1,3 @@
-import get from "lodash/get";
 import format from "date-fns/format";
 import subMonths from "date-fns/subMonths";
 import { useQueryWithClient } from "@deskpro/app-sdk";
@@ -129,14 +128,14 @@ const useEmployee: UseEmployee = ({ employeeId, holidaysPeriodMax }) => {
       lateness,
       documents,
     ].some(({ isFetching }) => isFetching),
-    employee: get(employee, ["data", "Result"]),
-    salary: get(salary, ["data", "Result", 0]),
-    holidays: get(holidays, ["data", "Result"], []) || [],
-    benefits: get(benefits, ["data", "Result"], []) || [],
-    documents: get(documents, ["data", "Result"], []) || [],
-    lateness: get(lateness, ["data", "Result"], []) || [],
-    qualifications: get(qualifications, ["data", "Result"], []) || [],
-    trainings: get(trainings, ["data", "Result"], []) || [],
+    employee: employee.data?.Result,
+    salary: salary.data?.Result[0] ?? undefined,
+    holidays: holidays.data?.Result ?? [],
+    benefits: benefits.data?.Result ?? [],
+    documents: documents.data?.Result ?? [],
+    lateness: lateness.data?.Result ?? [],
+    qualifications: qualifications.data?.Result ?? [],
+    trainings: trainings.data?.Result ?? [],
   };
 }
 

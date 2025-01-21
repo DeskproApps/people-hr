@@ -6,7 +6,7 @@ const  getEmployeeService = (
   client: IDeskproClient,
   employeeId: Employee["EmployeeId"]["DisplayValue"],
 ) => {
-  return baseRequest(client, {
+  return baseRequest<Employee>(client, {
     url: "/Employee",
     data: {
       Action: "GetEmployeeDetailById",
