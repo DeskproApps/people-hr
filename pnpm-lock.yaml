@@ -45,8 +45,8 @@ importers:
         specifier: ^6.28.1
         version: 6.28.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       ts-pattern:
-        specifier: ^4.3.0
-        version: 4.3.0
+        specifier: ^5.6.2
+        version: 5.6.2
     devDependencies:
       '@jest/globals':
         specifier: ^29.7.0
@@ -2971,6 +2971,9 @@ packages:
 
   ts-pattern@4.3.0:
     resolution: {integrity: sha512-pefrkcd4lmIVR0LA49Imjf9DYLK8vtWhqBPA3Ya1ir8xCW0O2yjL9dsCVvI7pCodLC5q7smNpEtDR2yVulQxOg==}
+
+  ts-pattern@5.6.2:
+    resolution: {integrity: sha512-d4IxJUXROL5NCa3amvMg6VQW2HVtZYmUTPfvVtO7zJWGYLJ+mry9v2OmYm+z67aniQoQ8/yFNadiEwtNS9qQiw==}
 
   tslib@1.14.1:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
@@ -6454,6 +6457,8 @@ snapshots:
       '@types/jest': 29.5.14
 
   ts-pattern@4.3.0: {}
+
+  ts-pattern@5.6.2: {}
 
   tslib@1.14.1: {}
 
