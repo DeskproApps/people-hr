@@ -28,7 +28,7 @@
     "react-dom": "^18.3.1",
     "react-is": "^18.3.1",
     "react-router-dom": "^6.30.0",
-    "ts-pattern": "^4.3.0"
+    "ts-pattern": "^5.7.1"
   },
   "devDependencies": {
     "@jest/globals": "^29.7.0",
