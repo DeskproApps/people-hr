@@ -32,7 +32,12 @@
       {
         "url": "https://api.peoplehr.net/.*",
         "methods": ["POST"],
-        "timeout": 20
+        "timeout": 20,
+        "settingsInjection": {
+          "api_key": {
+            "body": ["APIKey"]
+          }
+        }
       }
     ]
   }
